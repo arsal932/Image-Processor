@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Image_Processor.Models.ImagesViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<table id="example1" class="table table-bordered ">
+    <thead class="table-avatar tableHeader_Footer" >
+        <tr>
+             <th><i class="icon-color fa fa-sort-numeric-down"></i> #</th>
+            <th><i class="icon-color fa fa-file"></i> Display Name</th>
+            <th><i class="icon-color note-icon-picture"></i> Original Name</th>
+            <th><i class="icon-color fa fa-th-list"></i> Ext</th>            
+            <th><i class="icon-color fa fa-check"></i> Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td >
+                    @(i + 1)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.DisplayFileName)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.OriginalFileName)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Ext)
+                </td>                
+                <td class="project-actions text-right">
+                    <button class="btn btn-outline-info btn-sm" >
+                        <i class="fa fa-download">
+                        </i>
+                        Download
+                    </button>                   
+                    <button class="btn btn-outline-danger btn-sm" onclick="loadView('/Images/Delete','myModal','myModalContent','1')">
+                        <i class="fas fa-trash">
+                        </i>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            i += 1;
+        }
+    </tbody>
+    <tfoot class="tableHeader_Footer">
+        <tr>
+       <th><i class="icon-color fa fa-sort-numeric-up"></i> #</th>
+            <th><i class="icon-color fa fa-file"></i> Display Name</th>
+            <th><i class="icon-color note-icon-picture"></i> Original Name</th>
+            <th><i class="icon-color fa fa-th-list"></i> Ext</th>            
+            <th><i class="icon-color fa fa-check"></i> Actions</th>
+        </tr>
+    </tfoot>
+</table>
+<script>
+    $(function() {
+
+        $("#example1").DataTable({
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, 'All'],
+            ],
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            "buttons": [
+                {
+                    extend: 'copy',
+                    title: 'Images',
+                    text: window.copyButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'csv',
+                    title: 'Images',
+                    text: window.csvButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    title: 'Images',
+                    text: window.excelButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    title: 'Images',
+                    text: window.pdfButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'print',
+                    title: 'Images',
+                    text: window.printButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'colvis',
+                    title: 'Images',
+                    text: window.colvisButtonTrans,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+            ]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>

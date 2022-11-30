@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Images";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- /.card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Images</h3>
+                    <div class="project-actions text-right">
+                        <button class="button-margin btn btn-info btn-sm float-right" id="btn_listcontacts" onclick="    location.href = '/Images/ImageEditor';"><i class="fa fa-users"></i> Edit Image</button>
+                        <button class="button-margin btn btn-info btn-sm float-right" id="btn_addlist" onclick="loadView('/Images/UploadImage','myModal','myModalContent')"><i class="fa fa-upload"></i> Upload Image</button>                        
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div id="list" class="card-body">
+                </div>
+                <!-- /.card-body -->
+            </div>
+             <div id='Modal-xl' class='modal'>
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div id='ModalxlContent'></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id='myModal' class='modal'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id='myModalContent'></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<script>
+    function Load() {
+        document.getElementById("list").innerHTML = '<center><span>Loading... <i class="spinner fa fa-sync fa-spin"></i></span></center>';
+        $("#list").load("/Images/GetList");
+    }
+    window.onload = function() {
+        document.getElementById("nav_images").classList.add("active");
+        Load();
+    }    
+    function loadView(url, modalId, modalContentID,id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list":id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
+    }
+</script>
