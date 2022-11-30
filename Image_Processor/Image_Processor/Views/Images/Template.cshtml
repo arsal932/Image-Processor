@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Template";
+    Layout = "~/Views/Shared/EditorLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card" style="max-height:90%;overflow:scroll;">
+                <div class="card-header">
+                    <center><h3 class="card-title">Templates</h3></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img draggable="true" class="template-img" height="200" src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" />
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img draggable="true" class="template-img" height="200" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" />
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img draggable="true" class="template-img" height="200" src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <nav class="main-header navbar navbar-expand-md navbar-light">
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/Images/Gallery" id="nav_gallery" class="nav-link">Bold</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index3.html" class="nav-link">Italic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index3.html" class="nav-link">Underline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index3.html" class="nav-link">Color</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+            <div class="row">
+                <div class="col-sm-12">
+                    <canvas style="border:solid;border-width:0.01px; border-color:grey;background-color:rgb(280,280,280)" width="1300" height="500"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
