@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o2vx+uEp1IHrL+i7cLXNRW/ioIB7Q09bBywaa1B8YBc=",
+  "Hash": "9HJ1tt8pncLsCm5koX7VvHS29Tl4VS1dgBWnYB9lj3o=",
   "Source": "Image_Processor",
   "BasePath": "_content/Image_Processor",
   "Mode": "Default",
@@ -2038,6 +2038,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Editor.css"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\css\\Shapes.css",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "css/Shapes.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Shapes.css"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\css\\site.css",

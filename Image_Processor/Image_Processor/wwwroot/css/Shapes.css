@@ -1,0 +1,82 @@
+﻿.square {
+    height: 26%;
+    width: 26%;
+    padding: 26%;
+    background-color: #555;
+}
+.circle {
+    height: 26%;
+    width: 26%;
+    padding: 26%;
+    background-color: #555;
+    border-radius: 50%;
+}
+.oval {
+    height: 13%;
+    width: 26%;
+    padding: 26%;
+    background-color: #555;
+    border-radius: 13%;
+}
+.trapezoid {
+    border-bottom: 13% solid #555;
+    border-left: 7% solid transparent;
+    border-right: 7% solid transparent;
+    height: 0;
+    width: 33%;
+    padding: 26%;
+}
+.rectangle {
+    height: 13%;
+    width: 26%;
+    padding: 26%;
+    background-color: #555;
+}
+.parallelogram {
+    width: 100px;
+    height: 50px;
+    padding: 26%;
+    transform: skew(20deg);
+    background: #555;
+}
+.triangle-up {
+    width: 0;
+    height: 0;
+    padding: 26%;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #555;
+}
+.triangle-down {
+    width: 0;
+    height: 0;
+    padding: 26%;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 50px solid #555;
+}
+.triangle-left {
+    width: 0;
+    height: 0;
+    padding: 26%;
+    border-top: 25px solid transparent;
+    border-right: 50px solid #555;
+    border-bottom: 25px solid transparent;
+}
+.triangle-right {
+    width: 0;
+    padding: 26%;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid #555;
+    border-bottom: 25px solid transparent;
+}
+.shape{    
+}
+    .shape:hover {
+        border: solid;
+        border-width: 0.1px;
+        border-color: deepskyblue;
+        cursor: pointer;
+        opacity: 0.5;
+    }
