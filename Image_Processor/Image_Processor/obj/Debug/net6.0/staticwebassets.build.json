@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9HJ1tt8pncLsCm5koX7VvHS29Tl4VS1dgBWnYB9lj3o=",
+  "Hash": "9zcvo8BEjnlzvEPR7kp6iRP+HOZA1diYQaMDjs6JDlo=",
   "Source": "Image_Processor",
   "BasePath": "_content/Image_Processor",
   "Mode": "Default",
@@ -5914,6 +5914,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index3.html"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\js\\Canvas_Editor.js",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "js/Canvas_Editor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Canvas_Editor.js"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\js\\ImageEditor.js",
