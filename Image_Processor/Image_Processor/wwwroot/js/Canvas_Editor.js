@@ -1,7 +1,7 @@
 ﻿let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
-canvas.width = window.innerWidth - 30;
-canvas.height = window.innerHeight - 10;
+canvas.width = window.innerWidth - 350;
+canvas.height = window.innerHeight - 200;
 
 let canvas_width = canvas.width;
 let canvas_height = canvas.height;
@@ -18,37 +18,84 @@ window.onscroll = function() { get_Offset(); }
 window.onresize = function() { get_Offset(); }
 canvas.onresize = function() { get_Offset(); }
 
-let shapes = [];
-let current_shape_index = null;
+let objects = [];
+let current_object_index = null;
 let is_dragging = false;
 let startX;
 let startY;
 
-shapes.push({ x: 0, y: 0, width: 200, height: 200, color: 'red' });
-shapes.push({ x: 0, y: 0, width: 100, height: 100, color: 'blue' });
-
-let is_mouse_in_shape = function(x, y, shape) {
-    let shape_left = shape.x;
-    let shape_right = shape.x + shape.width;
-    let shape_top = shape.y;
-    let shape_bottom = shape.y + shape.height;
-    if (x > shape_left && x < shape_right && y > shape_top && y < shape_bottom) {
-        console.log('yes');
+objects.push({ type: 'rect', x: 0, y: 0, width: 200, height: 200, color: 'red' });
+objects.push({
+    type: 'rect',
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 100,
+    color: 'blue'
+});
+objects.push({
+    type: 'img',
+    img: document.getElementById("image1"),
+    x: 50,
+    y: 10,
+    width: 200,
+    height: 200
+});
+let add_image_object = function(imgID) {
+    objects.push({
+        type: 'img',
+        img: document.getElementById(imgID),
+        x: 50,
+        y: 10,
+        width: 200,
+        height: 200
+    });
+    draw_objects();
+}
+let add_shape_object = function(shape) {
+    objects.push({
+        type: shape,
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100,
+        color: 'black'
+    });
+    draw_objects();
+}
+let default_form_open = function() {
+    document.getElementById("templates_panel").style.display = "block";
+}
+default_form_open();
+let is_mouse_in_object = function(x, y, object) {
+    let object_left = object.x;
+    let object_right = object.x + object.width;
+    let object_top = object.y;
+    let object_bottom = object.y + object.height;
+    if (x > object_left && x < object_right && y > object_top && y < object_bottom) {
         return true;
     }
     return false;
 }
-
+let enable_elements = function(id) {
+    document.getElementById(id).disabled = false;
+}
+let disable_elements = function(id) {
+    document.getElementById(id).disabled = true;
+}
 let mouse_down = function(event) {
     event.preventDefault();
+    disable_elements("_color");
     startX = parseInt(event.clientX - offset_x);
     startY = parseInt(event.clientY - offset_Y);
     let index = 0;
-    for (let shape of shapes) {
-        if (is_mouse_in_shape(startX, startY, shape)) {
-            current_shape_index = index;
+    for (let object of objects) {
+        if (is_mouse_in_object(startX, startY, object)) {
+            current_object_index = index;
             is_dragging = true;
-            console.log(is_dragging);
+            if (object.type != "img") {
+                enable_elements("_color");
+            }
             return;
         }
         index++;
@@ -71,11 +118,7 @@ let mouse_out = function(event) {
 }
 
 let mouse_move = function(event) {
-    if (is_dragging) {
-        console.log('moving with dragging');
-    } else {
-        console.log('moving without dragging');
-    }
+
     if (!is_dragging) {
         return;
     } else {
@@ -86,11 +129,11 @@ let mouse_move = function(event) {
         let dx = mouseX - startX;
         let dy = mouseY - startY;
 
-        for (let shape of shapes) {
-            let current_shape = shapes[current_shape_index];
-            current_shape.x += dx;
-            current_shape.y += dy;
-            draw_shapes();
+        for (let object of objects) {
+            let current_object = objects[current_object_index];
+            current_object.x += dx;
+            current_object.y += dy;
+            draw_objects();
             startX = mouseX;
             startY = mouseY;
         }
@@ -102,11 +145,15 @@ canvas.onmouseup = mouse_up;
 canvas.onmouseout = mouse_out
 canvas.onmousemove = mouse_move;
 
-let draw_shapes = function() {
+let draw_objects = function() {
     context.clearRect(0, 0, canvas_width, canvas_height);
-    for (let shape of shapes) {
-        context.fillStyle = shape.color;
-        context.fillRect(shape.x, shape.y, shape.width, shape.height);
+    for (let object of objects) {
+        if (object.type == "rect") {
+            context.fillStyle = object.color;
+            context.fillRect(object.x, object.y, object.width, object.height);
+        } else if (object.type == "img") {
+            context.drawImage(object.img, object.x, object.y, object.width, object.height);
+        }
     }
 }
-draw_shapes();
+draw_objects();
