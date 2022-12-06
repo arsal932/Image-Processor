@@ -24,14 +24,29 @@ let is_dragging = false;
 let startX;
 let startY;
 
-objects.push({ type: 'rect', x: 0, y: 0, width: 200, height: 200, color: 'red' });
 objects.push({
     type: 'rect',
     x: 0,
     y: 0,
+    width: 200,
+    height: 200,
+    color: 'red',
+    Text: 'This is text area',
+    fontColor: 'black',
+    fontSize: 12,
+    fontFamily: 'Georgia'
+});
+objects.push({
+    type: 'text',
+    x: 0,
+    y: 0,
     width: 100,
     height: 100,
-    color: 'blue'
+    color: 'blue',
+    Text: 'This is text area\nThis is text areaThis is text area',
+    fontColor: 'white',
+    fontSize: 20,
+    fontFamily: 'Georgia'
 });
 objects.push({
     type: 'img',
@@ -59,9 +74,30 @@ let add_shape_object = function(shape) {
         y: 0,
         width: 100,
         height: 100,
-        color: 'black'
+        color: 'black',
     });
     draw_objects();
+}
+let add_label_object = function() {
+    objects.push({
+        type: 'text',
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100,
+        color: 'black',
+        Text: 'This is your line 1\n This is your line2. This is your line2 \n This is your line3',
+        fontColor: 'white',
+        fontSize: 20,
+        fontFamily: 'Georgia'
+    });
+    draw_objects();
+}
+let open_text_panel = function() {
+    document.getElementById("text_panel").style.display = "block";
+}
+let hide_text_panel = function() {
+    document.getElementById("text_panel").style.display = "none";
 }
 let default_form_open = function() {
     document.getElementById("templates_panel").style.display = "block";
@@ -96,7 +132,7 @@ let mouse_down = function(event) {
             if (object.type != "img") {
                 enable_elements("_color");
             }
-            return;
+            //return;
         }
         index++;
     }
@@ -146,14 +182,40 @@ canvas.onmouseout = mouse_out
 canvas.onmousemove = mouse_move;
 
 let draw_objects = function() {
+
     context.clearRect(0, 0, canvas_width, canvas_height);
     for (let object of objects) {
         if (object.type == "rect") {
             context.fillStyle = object.color;
             context.fillRect(object.x, object.y, object.width, object.height);
+            //context.fillStyle = object.fontColor;
+            //context.font = "20px Georgia";
+            //context.fillText(object.Text + object.Text + object.Text, object.x, object.y + (object.width) / 2, object.width);
+        } else if (object.type == "text") {
+            let lines = object.Text.split('\n');
+            let space = 10;
+            let padding = 5;
+            context.fillStyle = object.color;
+            object.width = space + find_max_width(lines);
+            object.height = space + (lines.length * object.fontSize);
+            context.fillRect(object.x, object.y, object.width, object.height);
+            for (var i = 0; i < lines.length; i++) {
+                context.fillStyle = object.fontColor;
+                context.font = "12px Georgia";
+                context.fillText(lines[i], object.x + padding, object.y + ((i + 1) * object.fontSize), object.width);
+            }
         } else if (object.type == "img") {
             context.drawImage(object.img, object.x, object.y, object.width, object.height);
         }
     }
+}
+let find_max_width = function(lines) {
+    let max_width = 0;
+    for (var i = 0; i < lines.length; i++) {
+        if (context.measureText(lines[i]).width > max_width) {
+            max_width = context.measureText(lines[i]).width;
+        }
+    }
+    return max_width;
 }
 draw_objects();
