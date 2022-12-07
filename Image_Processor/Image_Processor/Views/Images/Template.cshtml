@@ -76,7 +76,7 @@
                         <div class="col-sm-12">
                             <button onclick="add_label_object()" class="btn btn-info btn-block">Add Label</button>
                         </div>
-                    </div><hr />                    
+                    </div><hr />
                 </div>
                 <div class="card-footer"></div>
             </div>
@@ -87,19 +87,49 @@
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <input onchange ="change_object_color('_color')" type="color" disabled id="_color" />                                                        
+                            <br />
+                            <a href="#" class="nav-link">Customize</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/Images/Gallery" id="nav_gallery" class="nav-link">Bold</a>
+                        <li class="nav-item" id="background_color" style="display:none">
+                            <small>B.Color</small><br />
+                            <input onchange="change_object_color('_color')" type="color" id="_color" />
                         </li>
-                        <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Italic</a>
+                        <li class="nav-item" id="text_el_b" style="display:none">
+                            <br />
+                            @*<small>Bold</small><br />*@
+                            <a href="#" id="bold_text" onclick="bold_text()" class="nav-link"><b>Bold</b></a>
                         </li>
-                        <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Underline</a>
-                        </li>      
-                        <li>
-                            <textarea rows="1" cols="20">Enter details here... \n s
+                        <li class="nav-item" id="text_el_i" style="display:none">
+                            <br />
+                            @*<small>Italic</small><br />*@
+                            <a href="#" class="nav-link" id="italic_text" onclick="italic_text()"><i>Italic</i></a>
+                        </li>
+                        <li class="nav-item" id="text_el_u" style="display:none">
+                            <br />
+                            @*<small>Underline</small><br />*@
+                            <a href="#" class="nav-link" onclick="toupper_text()" ><u>UPPER</u></a>
+                        </li>
+                        <li class="nav-item" id="text_el_l" style="display:none">
+                            <br />
+                            @*<small>Underline</small><br />*@
+                            <a href="#" class="nav-link" onclick="tolower_text()">lower</a>
+                        </li>
+                         <li class="nav-item" id="text_el_fs" style="display:none;width:30%">
+                             <small>Font Size</small><br />                           
+                            <input oninput="change_font_size()"  id="size_text" type="number" min="1" max="100" placeholder="font size" />
+                        </li>
+                        <li class="nav-item" id="text_el_fc" style="display:none">
+                            <small>B.Color</small><br />
+                            <input onchange="change_font_color()" type="color" id="text_color" />
+                        </li>
+                         <li class="nav-item" id="text_el_ff" style="display:none">
+                             @*<small>Font Family</small><br />                           *@
+                             <br /><select class="nav-link" id="fontfamily_text">
+                                 <option>Select Font Family</option>
+                             </select>
+                        </li>                         
+                        <li id="text_el_t" style="display:none">
+                            <textarea oninput="change_label_text()" rows="2" cols="20" id="label_text">
                             </textarea>
                         </li>
                     </ul>
@@ -115,64 +145,55 @@
     </div>
 </div>
 <script>
-    function change_object_color(id) {
     
-    var color = document.getElementById(id).value;
-    if (current_object_index != null) {
-        var object = objects[current_object_index];
-        object.color = color;
-        objects[current_object_index] = object;
-        draw_objects();
-    }
-}
-    //var canvas = document.getElementById("canvas");
-    //var ctx = canvas.getContext("2d");
-    //var canvasOffset = $("#canvas").offset();
-    //var offsetX = canvasOffset.left;
-    //var offsetY = canvasOffset.top;
-    //var canvasWidth = canvas.width;
-    //var canvasHeight = canvas.height;
-    //var isDragging = false;
+            //var canvas = document.getElementById("canvas");
+            //var ctx = canvas.getContext("2d");
+            //var canvasOffset = $("#canvas").offset();
+            //var offsetX = canvasOffset.left;
+            //var offsetY = canvasOffset.top;
+            //var canvasWidth = canvas.width;
+            //var canvasHeight = canvas.height;
+            //var isDragging = false;
 
-    //function drawCanvasImage(imgid) {
-    //    var img = document.getElementById(imgid);
-    //    ctx.drawImage(img, 10, 10, 20, 20);
-    //}
-    //function handleMouseDown(e) {
-    //    var canMouseX = parseInt(e.clientX - offsetX);
-    //    var canMouseY = parseInt(e.clientY - offsetY);
-    //    // set the drag flag
-    //    isDragging = true;
-    //}
+            //function drawCanvasImage(imgid) {
+            //    var img = document.getElementById(imgid);
+            //    ctx.drawImage(img, 10, 10, 20, 20);
+            //}
+            //function handleMouseDown(e) {
+            //    var canMouseX = parseInt(e.clientX - offsetX);
+            //    var canMouseY = parseInt(e.clientY - offsetY);
+            //    // set the drag flag
+            //    isDragging = true;
+            //}
 
-    //function handleMouseUp(e) {
-    //    var canMouseX = parseInt(e.clientX - offsetX);
-    //    var canMouseY = parseInt(e.clientY - offsetY);
-    //    // clear the drag flag
-    //    isDragging = false;
-    //}
+            //function handleMouseUp(e) {
+            //    var canMouseX = parseInt(e.clientX - offsetX);
+            //    var canMouseY = parseInt(e.clientY - offsetY);
+            //    // clear the drag flag
+            //    isDragging = false;
+            //}
 
-    //function handleMouseOut(e) {
-    //    var canMouseX = parseInt(e.clientX - offsetX);
-    //    var canMouseY = parseInt(e.clientY - offsetY);
-    //    // user has left the canvas, so clear the drag flag
-    //    //isDragging=false;
-    //}
+            //function handleMouseOut(e) {
+            //    var canMouseX = parseInt(e.clientX - offsetX);
+            //    var canMouseY = parseInt(e.clientY - offsetY);
+            //    // user has left the canvas, so clear the drag flag
+            //    //isDragging=false;
+            //}
 
-    //function handleMouseMove(e) {
-    //    var canMouseX = parseInt(e.clientX - offsetX);
-    //    var canMouseY = parseInt(e.clientY - offsetY);
-    //    // if the drag flag is set, clear the canvas and draw the image
-    //    if (isDragging) {
-    //        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    //        ctx.drawImage(img, canMouseX - 128 / 2, canMouseY - 120 / 2, 128, 120);
-    //    }
-    //}
+            //function handleMouseMove(e) {
+            //    var canMouseX = parseInt(e.clientX - offsetX);
+            //    var canMouseY = parseInt(e.clientY - offsetY);
+            //    // if the drag flag is set, clear the canvas and draw the image
+            //    if (isDragging) {
+            //        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            //        ctx.drawImage(img, canMouseX - 128 / 2, canMouseY - 120 / 2, 128, 120);
+            //    }
+            //}
 
-    //$("#canvas").mousedown(function(e) { handleMouseDown(e); });
-    //$("#canvas").mousemove(function(e) { handleMouseMove(e); });
-    //$("#canvas").mouseup(function(e) { handleMouseUp(e); });
-    //$("#canvas").mouseout(function(e) { handleMouseOut(e); });
+            //$("#canvas").mousedown(function(e) { handleMouseDown(e); });
+            //$("#canvas").mousemove(function(e) { handleMouseMove(e); });
+            //$("#canvas").mouseup(function(e) { handleMouseUp(e); });
+            //$("#canvas").mouseout(function(e) { handleMouseOut(e); });
 
 </script>
 <script src="~/js/Canvas_Editor.js"></script>
