@@ -1,6 +1,6 @@
 ﻿let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
-canvas.width = window.innerWidth - 350;
+canvas.width = window.innerWidth - 300;
 canvas.height = window.innerHeight - 200;
 
 let canvas_width = canvas.width;
@@ -18,6 +18,7 @@ window.onscroll = function() { get_Offset(); }
 window.onresize = function() { get_Offset(); }
 canvas.onresize = function() { get_Offset(); }
 
+let pages = [];
 let objects = [];
 let current_object_index = null;
 let is_dragging = false;
@@ -119,6 +120,12 @@ let is_mouse_in_object = function(x, y, object) {
     }
     return false;
 }
+let set_font_family = function() {
+    if (current_object_index != null) {
+        $('#fontfamily_text').val(objects[current_object_index].fontFamily);
+    }
+}
+
 let fill_text = function() {
     if (current_object_index != null) {
         document.getElementById("label_text").value = objects[current_object_index].Text;
@@ -134,21 +141,15 @@ let hide_elements = function(id) {
     document.getElementById(id).style.display = "none";
 };
 let show_elements_for_label = function() {
-    show_elements("text_el_b");
-    show_elements("text_el_i");
+    show_elements("text_els");
     show_elements("text_el_t");
-    show_elements("text_el_u");
-    show_elements("text_el_l");
     show_elements("text_el_fs");
     show_elements("text_el_ff");
     show_elements("text_el_fc");
 }
 let hide_elements_of_label = function() {
-    hide_elements("text_el_b");
-    hide_elements("text_el_i");
+    hide_elements("text_els");
     hide_elements("text_el_t");
-    hide_elements("text_el_u");
-    hide_elements("text_el_l");
     hide_elements("text_el_fs");
     hide_elements("text_el_ff");
     hide_elements("text_el_fc");
@@ -262,6 +263,7 @@ let mouse_down = function(event) {
                 fill_text();
                 set_font_size();
                 set_font_color();
+                set_font_family();
                 if (object.isBold) {
                     active_links("bold_text");
                 }
@@ -269,13 +271,13 @@ let mouse_down = function(event) {
                     active_links("italic_text");
                 }
             }
-            //context.fillStyle = "black";
-            //context.fillRect(object.x + 2, object.y + 2, object.width + 2, object.height + 2);
             //return;
         }
         index++;
     }
-    let currentObject = objects[current_object_index];
+    context.fillStyle = 'rgba(225,225,225,0.5)';;
+    context.fillRect(objects[current_object_index].x,objects[current_object_index].y,objects[current_object_index].width,objects[current_object_index].height);
+    //let currentObject = objects[current_object_index];
     //let lastObject = objects[objects.length - 1];
     //objects[current_object_index] = lastObject;
     //objects[objects.length - 1] = currentObject;
@@ -368,6 +370,10 @@ let draw_objects = function() {
             context.drawImage(object.img, object.x, object.y, object.width, object.height);
         }
     }
+    update_page();
+}
+let update_page=function(){
+    document.getElementById("page1").src=document.getElementById('canvas').toDataURL();
 }
 let find_max_width = function(lines) {
     let max_width = 0;
@@ -379,3 +385,5 @@ let find_max_width = function(lines) {
     return max_width;
 }
 draw_objects();
+
+let make_new_page = function() {}
