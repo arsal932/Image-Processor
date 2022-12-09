@@ -69,7 +69,7 @@
                         <a href="#" id="nav_shapes" class="nav-link">Elements</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index3.html" class="nav-link">Uploads</a>
+                        <a href="#" id="nav_upload" class="nav-link">Uploads</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" id="nav_labels" class="nav-link">Text</a>
@@ -253,11 +253,13 @@
         function Set(id, panel) {            
             document.getElementById("nav_templates").classList.remove("active");
             document.getElementById("nav_shapes").classList.remove("active");
-            document.getElementById("nav_labels").classList.remove("active");
+            document.getElementById("nav_labels").classList.remove("active");                        
+            document.getElementById("nav_upload").classList.remove("active");                        
             document.getElementById(id).classList.add("active");
             document.getElementById("templates_panel").style.display = "none";
             document.getElementById("shapes_panel").style.display = "none";
             document.getElementById("text_panel").style.display = "none";
+            document.getElementById("upload_panel").style.display = "none";
             document.getElementById(panel).style.display = "block";
         }
         $("#nav_templates").on("click", function() {
@@ -268,6 +270,9 @@
         });
          $("#nav_labels").on("click", function() {
             Set("nav_labels", "text_panel");
+        });
+        $("#nav_upload").on("click", function() {
+            Set("nav_upload", "upload_panel");
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)

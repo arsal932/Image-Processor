@@ -11,37 +11,33 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div onclick="add_shape_object('rect')" draggable="true" class="shape circle">&nbsp;</div>
+                        <div class="col-sm-6">
+                            <img id="rect_shape" style="width:100%" onclick="add_rectangle_shape_object('rect')" class="template-img" height="70" src="~/dist/img/shapes/rectangle.png" />
+                        </div>
+                        <div class="col-sm-6">
+                            <img id="sqaure_shape" style="width:100%" onclick="add_square_shape_object('rect')" class="template-img" height="70" src="~/dist/img/shapes/sqaure.png" />
                         </div>
                     </div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape square">&nbsp;</div></div></div><hr />
-                    @*<div class="row"><div class="col-sm-12"><div draggable="true" class="shape rectangle">&nbsp;</div></div></div><hr />*@
-                    @*<div class="row"><div class="col-sm-12"><div draggable="true" class="shape trapezoid">&nbsp;</div></div></div><hr />*@
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape oval">&nbsp;</div></div></div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape parallelogram">&nbsp;</div></div></div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape triangle-up">&nbsp;</div></div></div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape triangle-down">&nbsp;</div></div></div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape triangle-left">&nbsp;</div></div></div><hr />
-                    <div class="row"><div class="col-sm-12"><div draggable="true" onclick="add_shape_object('rect')" class="shape triangle-right">&nbsp;</div> </div></div><hr />
-                    @*  <div class="row">
-                    <div class="col-sm-4"><div class="circle">&nbsp;</div> </div>
-                    <div class="col-sm-4"><div class="square">&nbsp;</div></div>
-                    <div class="col-sm-4"><div class="rectangle">&nbsp;</div></div>
-                    </div><hr />
                     <div class="row">
-                    <div class="col-sm-4"><div class="trapezoid">&nbsp;</div> </div>
-                    <div class="col-sm-4"><div class="oval">&nbsp;</div></div>
-                    <div class="col-sm-4"><div class="parallelogram">&nbsp;</div></div>
-                    </div><hr />
+                        <div class="col-sm-6">
+                            <img id="circle_shape" style="width:100%" onclick="add_circle_shape_object('circle')" class="template-img" height="70" src="~/dist/img/shapes/circle.png" />
+                        </div>
+                        @* <div class="col-sm-6">
+                        <img id="oval_shape" style="width:100%" onclick="add_oval_shape_object('oval')" class="template-img" height="70" src="~/dist/img/shapes/oval.png" />
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="upload_panel" style="max-height:90%;overflow:scroll;display:none">
+                <div class="card-header">
+                    <center><h5>Upload</h5></center>
+                </div>
+                <div class="card-body">
                     <div class="row">
-                    <div class="col-sm-4"><div class="triangle-up">&nbsp;</div> </div>
-                    <div class="col-sm-4"><div class="triangle-down">&nbsp;</div></div>
-                    <div class="col-sm-4"><div class="triangle-left">&nbsp;</div></div>
+                        <div class="col-sm-12">
+                            <input id="file_upload" type="file" />
+                        </div>
                     </div><hr />
-                    <div class="row">
-                    <div class="col-sm-4"><div class="triangle-right">&nbsp;</div> </div>
-                    </div><hr />*@
                 </div>
             </div>
             <div id="templates_panel" class="card" style="max-height:90%;overflow:scroll;display:none;">
@@ -51,23 +47,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <img id="image1" onclick="add_image_object('image1')" class="template-img" height="200" src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" />
+                            <img id="image1" onclick="add_image_object('/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" />
                         </div>
                     </div><hr />
                     <div class="row">
                         <div class="col-sm-12">
-                            <img id="image2" onclick="add_image_object('image2')" class="template-img" height="200" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" />
+                            <img id="image2" onclick="add_image_object('/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" />
                         </div>
                     </div><hr />
                     <div class="row">
                         <div class="col-sm-12">
-                            <img id="image3" onclick="add_image_object('image3')" class="template-img" height="200" src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" />
+                            <img id="image3" onclick="add_image_object('/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" />
                         </div>
                     </div>
                 </div>
                 <div class="card-footer"></div>
             </div>
-            <div id="text_panel" class="card" style=";display:none;">
+            <div id="text_panel" class="card" style="display:none;">
                 <div class="card-header">
                     <center><h5>Labels</h5></center>
                 </div>
@@ -82,33 +78,33 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <hr />            
+            <hr />
             <div class="row">
-                 <div class="col-sm-1">
+                <div class="col-sm-1">
                     <button class="btn btn-info" onclick="download()">Save</button>
                 </div>
-                <div class="col-sm-1" id="background_color" style="display:none">                    
+                <div class="col-sm-1" id="background_color" style="display:none">
                     <small>B.Color</small>
                     <input onchange="change_object_color('_color')" type="color" id="_color" />
-                </div>  
+                </div>
                 @*<div class=col-sm-1>
-                    <small id="bold_text" onclick="bold_text()"><b>Edit label</b></small>
+                <small id="bold_text" onclick="bold_text()"><b>Edit label</b></small>
                 </div>*@
                 <div class="col-sm-2" id="text_els" style="display:none">
                     <button id="bold_text" class="btn btn-default" style="font-weight: bold;" onclick="bold_text()">Bold</button>
                     <button id="italic_text" class="btn btn-default" style="font-style:italic;" onclick="italic_text()">Italic</button>
                     <button class="btn btn-default" onclick="toupper_text()">A</button>
-                    <button class="btn btn-default"  onclick="tolower_text()">a</button>
-                </div>                
+                    <button class="btn btn-default" onclick="tolower_text()">a</button>
+                </div>
                 <div class="col-sm-1" id="text_el_fs" style="display:none;width:30%">
 
                     <input oninput="change_font_size()" id="size_text" type="number" min="1" max="100" placeholder="font size" />
                 </div>
-                <div class="col-sm-1" id="text_el_fc" style="display:none">                    
+                <div class="col-sm-1" id="text_el_fc" style="display:none">
                     <small>F.Color</small>
                     <input onchange="change_font_color()" type="color" id="text_color" />
                 </div>
-                <div class="col-sm-2" id="text_el_ff" style="display:none">
+                <div class="col-sm-1" id="text_el_ff" style="display:none">
                     <select class="form-select" id="fontfamily_text" onchange="change_fontfamily()">
                         <option value="">Select</option>
                         <option disabled style="font-weight: bold; background-color: #EEEEEE">Serif Fonts</option>
@@ -140,7 +136,7 @@
                 </div>
             </div>
             <div class="row">
-                        
+
                 <div class="col-sm-12" style="overflow-x:scroll">
                     <img id="page1" class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
                     <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
@@ -175,54 +171,90 @@
         document.getElementById("image1").src = link.href;
         link.click();
     }
-                                        //var canvas = document.getElementById("canvas");
-                                        //var ctx = canvas.getContext("2d");
-                                        //var canvasOffset = $("#canvas").offset();
-                                        //var offsetX = canvasOffset.left;
-                                        //var offsetY = canvasOffset.top;
-                                        //var canvasWidth = canvas.width;
-                                        //var canvasHeight = canvas.height;
-                                        //var isDragging = false;
+    //let upload_file = function() {
+    //    var fileInput =
+    //        document.getElementById('file_upload');
 
-                                        //function drawCanvasImage(imgid) {
-                                        //    var img = document.getElementById(imgid);
-                                        //    ctx.drawImage(img, 10, 10, 20, 20);
-                                        //}
-                                        //function handleMouseDown(e) {
-                                        //    var canMouseX = parseInt(e.clientX - offsetX);
-                                        //    var canMouseY = parseInt(e.clientY - offsetY);
-                                        //    // set the drag flag
-                                        //    isDragging = true;
-                                        //}
+    //    var filePath = fileInput.value;
+    //    // Allowing file type
+    //    var allowedExtensions =
+    //        /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
-                                        //function handleMouseUp(e) {
-                                        //    var canMouseX = parseInt(e.clientX - offsetX);
-                                        //    var canMouseY = parseInt(e.clientY - offsetY);
-                                        //    // clear the drag flag
-                                        //    isDragging = false;
-                                        //}
+    //    if (!allowedExtensions.exec(filePath)) {
+    //        alert('Invalid file type');
+    //        fileInput.value = '';
+    //        return false;
+    //    }
+    //    else {
+    //        add_image_object(filePath);
+    //    }
+    //}
+    $('#file_upload').change(function(event) {
+        console.log(event);
+        var filePath = event.value;
+        alert(filePath);
+        // Allowing file type
+        var allowedExtensions =
+            /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
-                                        //function handleMouseOut(e) {
-                                        //    var canMouseX = parseInt(e.clientX - offsetX);
-                                        //    var canMouseY = parseInt(e.clientY - offsetY);
-                                        //    // user has left the canvas, so clear the drag flag
-                                        //    //isDragging=false;
-                                        //}
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            event.value = '';
+            return false;
+        }
+        else {
+            alert(URL.createObjectURL(event.target.files[0]));
+            add_image_object(URL.createObjectURL(event.target.files[0]));
+        }
+    });
+                                                //var canvas = document.getElementById("canvas");
+                                                //var ctx = canvas.getContext("2d");
+                                                //var canvasOffset = $("#canvas").offset();
+                                                //var offsetX = canvasOffset.left;
+                                                //var offsetY = canvasOffset.top;
+                                                //var canvasWidth = canvas.width;
+                                                //var canvasHeight = canvas.height;
+                                                //var isDragging = false;
 
-                                        //function handleMouseMove(e) {
-                                        //    var canMouseX = parseInt(e.clientX - offsetX);
-                                        //    var canMouseY = parseInt(e.clientY - offsetY);
-                                        //    // if the drag flag is set, clear the canvas and draw the image
-                                        //    if (isDragging) {
-                                        //        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                                        //        ctx.drawImage(img, canMouseX - 128 / 2, canMouseY - 120 / 2, 128, 120);
-                                        //    }
-                                        //}
+                                                //function drawCanvasImage(imgid) {
+                                                //    var img = document.getElementById(imgid);
+                                                //    ctx.drawImage(img, 10, 10, 20, 20);
+                                                //}
+                                                //function handleMouseDown(e) {
+                                                //    var canMouseX = parseInt(e.clientX - offsetX);
+                                                //    var canMouseY = parseInt(e.clientY - offsetY);
+                                                //    // set the drag flag
+                                                //    isDragging = true;
+                                                //}
 
-                                        //$("#canvas").mousedown(function(e) { handleMouseDown(e); });
-                                        //$("#canvas").mousemove(function(e) { handleMouseMove(e); });
-                                        //$("#canvas").mouseup(function(e) { handleMouseUp(e); });
-                                        //$("#canvas").mouseout(function(e) { handleMouseOut(e); });
+                                                //function handleMouseUp(e) {
+                                                //    var canMouseX = parseInt(e.clientX - offsetX);
+                                                //    var canMouseY = parseInt(e.clientY - offsetY);
+                                                //    // clear the drag flag
+                                                //    isDragging = false;
+                                                //}
+
+                                                //function handleMouseOut(e) {
+                                                //    var canMouseX = parseInt(e.clientX - offsetX);
+                                                //    var canMouseY = parseInt(e.clientY - offsetY);
+                                                //    // user has left the canvas, so clear the drag flag
+                                                //    //isDragging=false;
+                                                //}
+
+                                                //function handleMouseMove(e) {
+                                                //    var canMouseX = parseInt(e.clientX - offsetX);
+                                                //    var canMouseY = parseInt(e.clientY - offsetY);
+                                                //    // if the drag flag is set, clear the canvas and draw the image
+                                                //    if (isDragging) {
+                                                //        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                                                //        ctx.drawImage(img, canMouseX - 128 / 2, canMouseY - 120 / 2, 128, 120);
+                                                //    }
+                                                //}
+
+                                                //$("#canvas").mousedown(function(e) { handleMouseDown(e); });
+                                                //$("#canvas").mousemove(function(e) { handleMouseMove(e); });
+                                                //$("#canvas").mouseup(function(e) { handleMouseUp(e); });
+                                                //$("#canvas").mouseout(function(e) { handleMouseOut(e); });
 
 </script>
 <script src="~/js/Canvas_Editor.js"></script>

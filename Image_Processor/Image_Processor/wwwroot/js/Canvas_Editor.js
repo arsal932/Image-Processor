@@ -61,10 +61,12 @@ objects.push({
     width: 200,
     height: 200
 });
-let add_image_object = function(imgID) {
+let add_image_object = function(path) {
+    var image = new Image();
+    image.src = path;
     objects.push({
-        type: 'img',
-        img: document.getElementById(imgID),
+        type: "img",
+        img: image,
         x: 50,
         y: 10,
         width: 200,
@@ -72,14 +74,49 @@ let add_image_object = function(imgID) {
     });
     draw_objects();
 }
-let add_shape_object = function(shape) {
+let add_rectangle_shape_object = function(shape) {
+    objects.push({
+        type: shape,
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 50,
+        color: 'rgb(224,215,31)',
+    });
+    draw_objects();
+}
+let add_square_shape_object = function(shape) {
     objects.push({
         type: shape,
         x: 0,
         y: 0,
         width: 100,
         height: 100,
-        color: 'black',
+        color: 'rgb(143,206,219)',
+    });
+    draw_objects();
+}
+let add_circle_shape_object = function(shape) {
+    objects.push({
+        type: shape,
+        x: 50,
+        y: 50,
+        radius: 32,
+        sAngle: 0,
+        eAngle: 2,
+        color: 'rgb(143,206,219)',
+    });
+    draw_objects();
+}
+let add_oval_shape_object = function(shape) {
+    objects.push({
+        type: shape,
+        x: 50,
+        y: 50,
+        radius: 25,
+        sAngle: 0,
+        eAngle: 2,
+        color: 'rgb(143,206,219)',
     });
     draw_objects();
 }
@@ -111,14 +148,21 @@ let default_form_open = function() {
 }
 default_form_open();
 let is_mouse_in_object = function(x, y, object) {
-    let object_left = object.x;
-    let object_right = object.x + object.width;
-    let object_top = object.y;
-    let object_bottom = object.y + object.height;
-    if (x > object_left && x < object_right && y > object_top && y < object_bottom) {
-        return true;
+    if (object.type == "circle" || object.type == "oval") {
+        var areaX = x - object.x;
+        var areaY = y - object.y;
+        //return true if x^2 + y^2 <= radius squared.
+        return areaX * areaX + areaY * areaY <= object.radius * object.radius;
+    } else {
+        let object_left = object.x;
+        let object_right = object.x + object.width;
+        let object_top = object.y;
+        let object_bottom = object.y + object.height;
+        if (x > object_left && x < object_right && y > object_top && y < object_bottom) {
+            return true;
+        }
+        return false;
     }
-    return false;
 }
 let set_font_family = function() {
     if (current_object_index != null) {
@@ -276,7 +320,7 @@ let mouse_down = function(event) {
         index++;
     }
     context.fillStyle = 'rgba(225,225,225,0.5)';;
-    context.fillRect(objects[current_object_index].x,objects[current_object_index].y,objects[current_object_index].width,objects[current_object_index].height);
+    context.fillRect(objects[current_object_index].x, objects[current_object_index].y, objects[current_object_index].width, objects[current_object_index].height);
     //let currentObject = objects[current_object_index];
     //let lastObject = objects[objects.length - 1];
     //objects[current_object_index] = lastObject;
@@ -361,19 +405,26 @@ let draw_objects = function() {
                     fillstr += "bold ";
                 }
                 fillstr += object.fontSize + "px" + " " + object.fontFamily;
-                console.log(fillstr);
                 context.fillStyle = object.fontColor;
                 context.font = fillstr;
                 context.fillText(lines[i], object.x + padding, object.y + ((i + 1) * object.fontSize), object.width);
             }
         } else if (object.type == "img") {
             context.drawImage(object.img, object.x, object.y, object.width, object.height);
+        } else if (object.type == "circle" || object.type == "oval") {
+            if (object.type == "oval") {
+                context.scale(2, 1);
+            }
+            context.beginPath();
+            context.fillStyle = object.color;
+            context.arc(object.x, object.y, object.radius, object.sAngle, object.eAngle * Math.PI);
+            context.fill();
         }
     }
     update_page();
 }
-let update_page=function(){
-    document.getElementById("page1").src=document.getElementById('canvas').toDataURL();
+let update_page = function() {
+    document.getElementById("page1").src = document.getElementById('canvas').toDataURL();
 }
 let find_max_width = function(lines) {
     let max_width = 0;
