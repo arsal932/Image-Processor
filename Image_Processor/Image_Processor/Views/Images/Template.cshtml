@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <input id="file_upload" type="file" />
+                            <input id="file_upload" onchange="upload(this)" type="file" />
                         </div>
                     </div><hr />
                 </div>
@@ -78,6 +78,19 @@
             </div>
         </div>
         <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-3" style="display:none" id="resize_options">
+                    <button class="btn btn-default">-</button>
+                    <input style="width:15%;" type="number" min="1" step="1" value="1" placeholder="Increment" />
+                    <button class="btn btn-default">+</button>
+                </div>
+                <div class="col-sm-2" id="btn_delete_page">
+                    <button class="btn btn-danger">Delete Page</button>
+                </div>
+                <div class="col-sm-1" onclick="delete_object()" id="btn_delete_ob">
+                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>
             <hr />
             <div class="row">
                 <div class="col-sm-1">
@@ -143,14 +156,6 @@
                     <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
                     <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
                     <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    <img class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
                 </div>
             </div><hr />
         </div>
@@ -168,93 +173,33 @@
         var link = document.createElement('a');
         link.download = 'filename.png';
         link.href = document.getElementById('canvas').toDataURL();
-        document.getElementById("image1").src = link.href;
+        //document.getElementById("image1").src = link.href;
         link.click();
+    }   
+
+     function upload(img) {
+        var file = img.files[0];
+        var imagefile = file.type;
+        var match = ["image/jpeg", "image/png", "image/jpg"];
+        if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]))) {
+            alert("Invalid File Extension");
+        } else {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(img.files[0]);            
+        }        
     }
-    //let upload_file = function() {
-    //    var fileInput =
-    //        document.getElementById('file_upload');
-
-    //    var filePath = fileInput.value;
-    //    // Allowing file type
-    //    var allowedExtensions =
-    //        /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    //    if (!allowedExtensions.exec(filePath)) {
-    //        alert('Invalid file type');
-    //        fileInput.value = '';
-    //        return false;
-    //    }
-    //    else {
-    //        add_image_object(filePath);
-    //    }
-    //}
-    $('#file_upload').change(function(event) {
-        console.log(event);
-        var filePath = event.value;
-        alert(filePath);
-        // Allowing file type
-        var allowedExtensions =
-            /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-        if (!allowedExtensions.exec(filePath)) {
-            alert('Invalid file type');
-            event.value = '';
-            return false;
+    function imageIsLoaded(e) {             
+             add_image_object(e.target.result);
         }
-        else {
-            alert(URL.createObjectURL(event.target.files[0]));
-            add_image_object(URL.createObjectURL(event.target.files[0]));
-        }
-    });
-                                                //var canvas = document.getElementById("canvas");
-                                                //var ctx = canvas.getContext("2d");
-                                                //var canvasOffset = $("#canvas").offset();
-                                                //var offsetX = canvasOffset.left;
-                                                //var offsetY = canvasOffset.top;
-                                                //var canvasWidth = canvas.width;
-                                                //var canvasHeight = canvas.height;
-                                                //var isDragging = false;
-
-                                                //function drawCanvasImage(imgid) {
-                                                //    var img = document.getElementById(imgid);
-                                                //    ctx.drawImage(img, 10, 10, 20, 20);
-                                                //}
-                                                //function handleMouseDown(e) {
-                                                //    var canMouseX = parseInt(e.clientX - offsetX);
-                                                //    var canMouseY = parseInt(e.clientY - offsetY);
-                                                //    // set the drag flag
-                                                //    isDragging = true;
-                                                //}
-
-                                                //function handleMouseUp(e) {
-                                                //    var canMouseX = parseInt(e.clientX - offsetX);
-                                                //    var canMouseY = parseInt(e.clientY - offsetY);
-                                                //    // clear the drag flag
-                                                //    isDragging = false;
-                                                //}
-
-                                                //function handleMouseOut(e) {
-                                                //    var canMouseX = parseInt(e.clientX - offsetX);
-                                                //    var canMouseY = parseInt(e.clientY - offsetY);
-                                                //    // user has left the canvas, so clear the drag flag
-                                                //    //isDragging=false;
-                                                //}
-
-                                                //function handleMouseMove(e) {
-                                                //    var canMouseX = parseInt(e.clientX - offsetX);
-                                                //    var canMouseY = parseInt(e.clientY - offsetY);
-                                                //    // if the drag flag is set, clear the canvas and draw the image
-                                                //    if (isDragging) {
-                                                //        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                                                //        ctx.drawImage(img, canMouseX - 128 / 2, canMouseY - 120 / 2, 128, 120);
-                                                //    }
-                                                //}
-
-                                                //$("#canvas").mousedown(function(e) { handleMouseDown(e); });
-                                                //$("#canvas").mousemove(function(e) { handleMouseMove(e); });
-                                                //$("#canvas").mouseup(function(e) { handleMouseUp(e); });
-                                                //$("#canvas").mouseout(function(e) { handleMouseOut(e); });
+let delete_object = function() {
+    if (current_object_index != null) {
+        objects.splice(current_object_index, current_object_index);
+        current_object_index = null;
+        draw_objects();
+    }
+}
+    
 
 </script>
 <script src="~/js/Canvas_Editor.js"></script>

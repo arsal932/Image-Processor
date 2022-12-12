@@ -19,6 +19,7 @@ window.onresize = function() { get_Offset(); }
 canvas.onresize = function() { get_Offset(); }
 
 let pages = [];
+let currentPage = 0;
 let objects = [];
 let current_object_index = null;
 let is_dragging = false;
@@ -299,6 +300,10 @@ let mouse_down = function(event) {
             current_object_index = index;
             is_dragging = true;
             isFound = true;
+            //show_elements("btn_delete_ob");
+            //if (object.type != "text") {
+            //  show_elements("resize_options");
+            //}
             if (object.type != "img") {
                 show_elements("background_color");
             }
@@ -319,7 +324,7 @@ let mouse_down = function(event) {
         }
         index++;
     }
-    context.fillStyle = 'rgba(225,225,225,0.5)';;
+    context.fillStyle = 'rgba(225,225,225,0.5)';
     context.fillRect(objects[current_object_index].x, objects[current_object_index].y, objects[current_object_index].width, objects[current_object_index].height);
     //let currentObject = objects[current_object_index];
     //let lastObject = objects[objects.length - 1];
