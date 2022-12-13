@@ -21,47 +21,48 @@ canvas.onresize = function() { get_Offset(); }
 let pages = [];
 let currentPage = 0;
 let objects = [];
+let emptyObjects = objects;
 let current_object_index = null;
 let is_dragging = false;
 let startX;
 let startY;
 
-objects.push({
-    type: 'rect',
-    x: 0,
-    y: 0,
-    width: 200,
-    height: 200,
-    color: 'red',
-    Text: 'This is text area',
-    fontColor: 'black',
-    fontSize: 12,
-    fontFamily: 'Georgia',
-    isBold: false,
-    isItalic: false
-});
-objects.push({
-    type: 'text',
-    x: 0,
-    y: 0,
-    width: 100,
-    height: 100,
-    color: 'blue',
-    Text: 'This is text area\nThis is text areaThis is text area',
-    fontColor: 'white',
-    fontSize: 12,
-    fontFamily: 'Georgia',
-    isBold: false,
-    isItalic: false
-});
-objects.push({
-    type: 'img',
-    img: document.getElementById("image1"),
-    x: 50,
-    y: 10,
-    width: 200,
-    height: 200
-});
+//objects.push({
+//    type: 'rect',
+//    x: 0,
+//    y: 0,
+//    width: 200,
+//    height: 200,
+//    color: 'red',
+//    Text: 'This is text area',
+//    fontColor: 'black',
+//    fontSize: 12,
+//    fontFamily: 'Georgia',
+//    isBold: false,
+//    isItalic: false
+//});
+//objects.push({
+//    type: 'text',
+//    x: 0,
+//    y: 0,
+//    width: 100,
+//    height: 100,
+//    color: 'blue',
+//    Text: 'This is text area\nThis is text areaThis is text area',
+//    fontColor: 'white',
+//    fontSize: 12,
+//    fontFamily: 'Georgia',
+//    isBold: false,
+//    isItalic: false
+//});
+//objects.push({
+//    type: 'img',
+//    img: document.getElementById("image1"),
+//    x: 50,
+//    y: 10,
+//    width: 200,
+//    height: 200
+//});
 let add_image_object = function(path) {
     var image = new Image();
     image.src = path;
@@ -301,9 +302,10 @@ let mouse_down = function(event) {
             is_dragging = true;
             isFound = true;
             //show_elements("btn_delete_ob");
-            //if (object.type != "text") {
-            //  show_elements("resize_options");
-            //}
+            if (object.type != "text") {
+                //show_elements("resize_plus");
+                //show_elements("resize_minus");
+            }
             if (object.type != "img") {
                 show_elements("background_color");
             }
@@ -384,6 +386,7 @@ canvas.onmousemove = mouse_move;
 
 let draw_objects = function() {
     context.clearRect(0, 0, canvas_width, canvas_height);
+    load_objects();
     for (let object of objects) {
         //context.globalAlpha = 0.4;
         if (object.type == "rect") {
@@ -429,7 +432,21 @@ let draw_objects = function() {
     update_page();
 }
 let update_page = function() {
-    document.getElementById("page1").src = document.getElementById('canvas').toDataURL();
+    if (currentPage >= 0) {
+        var crntPage = "page" + currentPage;
+        console.log(crntPage);
+        document.getElementById(crntPage).src = document.getElementById('canvas').toDataURL();
+    }
+}
+let load_objects = function() {
+    if (pages.length < 1) {
+        emptyObjects = [];
+        pages.push(emptyObjects);
+    }
+    if (currentPage < 0) {
+        currentPage = 0;
+    }
+    objects = pages[currentPage];
 }
 let find_max_width = function(lines) {
     let max_width = 0;
@@ -441,5 +458,3 @@ let find_max_width = function(lines) {
     return max_width;
 }
 draw_objects();
-
-let make_new_page = function() {}
