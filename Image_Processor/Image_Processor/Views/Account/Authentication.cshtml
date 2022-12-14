@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Authentication";
+    Layout = "~/Views/Shared/Login_Layout.cshtml";
+}
+@*<div id='Modal-xl' class='modal'>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div id='ModalxlContent'></div>
+        </div>
+    </div>
+
+</div>*@
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>
+<script>
+    window.onload = function() {
+        loadView('/Account/Login', 'myModal', 'myModalContent');
+    }
+    function loadView(url, modalId, modalContentID, id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list": id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
+    }
+</script>
+
