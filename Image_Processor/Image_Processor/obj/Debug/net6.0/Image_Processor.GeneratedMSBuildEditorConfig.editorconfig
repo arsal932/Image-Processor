@@ -91,6 +91,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/AddFiles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEFkZEZpbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/GetList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEdldExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Templates/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
