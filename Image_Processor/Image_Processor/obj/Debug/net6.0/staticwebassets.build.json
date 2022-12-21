@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RF/1yga/l684C+8py54Rii3wivx3f4pUKZ/7WIBYT38=",
+  "Hash": "uYhgRoGBfct01W84nkX+UloX0Gs8X+7rGL15XCO4laU=",
   "Source": "Image_Processor",
   "BasePath": "_content/Image_Processor",
   "Mode": "Default",
@@ -2735,6 +2735,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\ImageProcessing.png"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\img\\images.jpg",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "dist/img/images.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\images.jpg"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\img\\mitchell-orr-2G4_KMJ4b9s-unsplash.jpg",

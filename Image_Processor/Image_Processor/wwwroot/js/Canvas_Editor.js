@@ -63,12 +63,40 @@ let startY;
 //    width: 200,
 //    height: 200
 //});
+function createPoster(path) {
+    const video = document.createElement('video');
+    video.src = path + "#t=1";
+    video.autoplay = false;
+    video.muted = true;
+    var canvas_1 = document.createElement("canvas");
+    canvas_1.style.backgroundColor = "white";
+    canvas_1.width = 350;
+    canvas_1.height = 200;
+    canvas_1.getContext("2d").drawImage(video, 0, 0, canvas_1.width, canvas_1.height);
+    return canvas_1.toDataURL("image/jpeg");;
+}
 let add_image_object = function(path) {
     var image = new Image();
     image.src = path;
     objects.push({
         type: "img",
         img: image,
+        path: path,
+        x: 50,
+        y: 10,
+        width: 200,
+        height: 200
+    });
+    draw_objects();
+}
+let add_Video_object = function(path) {
+    var image = new Image();
+    image.src = createPoster(path);
+    objects.push({
+        type: "img",
+        isVideo: true,
+        img: image,
+        path: path,
         x: 50,
         y: 10,
         width: 200,
@@ -341,6 +369,35 @@ let mouse_down = function(event) {
     isFound = false;
 }
 
+
+let mousedbl_click = function(event) {
+    event.preventDefault();
+    hide_elements("background_color");
+    hide_elements_of_label();
+    startX = parseInt(event.clientX - offset_x);
+    startY = parseInt(event.clientY - offset_Y);
+    let index = 0;
+    for (let object of objects) {
+        if (is_mouse_in_object(startX, startY, object)) {
+            if (object.type == "img" && object.isVideo == true) {
+                current_object_index = index;
+                var video = document.createElement("video");
+                //video.id = "id_1";
+                video.src = object.path;
+                video.play();
+                update_Video(video);
+            }
+        }
+        index++;
+    }
+}
+let update_Video = function(video) {
+    if (!video.ended) {
+        let object = objects[current_object_index];
+        context.drawImage(document.getElementById("video_1"), object.x, object.y, object.width, object.height);
+        update_Video(video);
+    }
+}
 let mouse_up = function(event) {
     if (!is_dragging) {
         return;
@@ -378,7 +435,7 @@ let mouse_move = function(event) {
         //}
     }
 }
-
+canvas.ondblclick = mousedbl_click;
 canvas.onmousedown = mouse_down;
 canvas.onmouseup = mouse_up;
 canvas.onmouseout = mouse_out
@@ -449,12 +506,20 @@ let load_objects = function() {
     objects = pages[currentPage];
 }
 let find_max_width = function(lines) {
-    let max_width = 0;
-    for (var i = 0; i < lines.length; i++) {
-        if (context.measureText(lines[i]).width > max_width) {
-            max_width = context.measureText(lines[i]).width;
+        let max_width = 0;
+        for (var i = 0; i < lines.length; i++) {
+            if (context.measureText(lines[i]).width > max_width) {
+                max_width = context.measureText(lines[i]).width;
+            }
         }
+        return max_width;
     }
-    return max_width;
-}
+    //var _video = document.querySelectorAll("video");
+    //_video.addEventListener('play', (event) => {
+    //  if (this.custom == "yes") {
+    //    console.log(_video);
+    //  let object = objects[this.index];
+    //context.drawImage(this, object.x, object.y, object.width, object.height);
+    //}
+    //});
 draw_objects();
