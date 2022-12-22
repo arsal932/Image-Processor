@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <video class="template-img" onclick="add_Video_object('https://media.geeksforgeeks.org/wp-content/uploads/20190616234019/Canvas.move_.mp4')" id="video_1" controls
+                            <video class="template-img" onclick="add_Video_object('https://media.geeksforgeeks.org/wp-content/uploads/20190616234019/Canvas.move_.mp4')"  id="video_1" controls
                                    preload="auto" style="width:100%">
                                 <source src="https://media.geeksforgeeks.org/wp-content/uploads/20190616234019/Canvas.move_.mp4"
                                         type="video/mp4">
@@ -58,7 +58,7 @@
                     </div><hr />
                     <div class="row">
                         <div class="col-sm-12">
-                             <video class="template-img" onclick="add_Video_object('https://archive.org/download/C.E.PriceCatWalksTowardCamera/cat_walks_toward_camera_512kb.mp4')" id="video_2" controls
+                            <video class="template-img" onclick="add_Video_object('https://archive.org/download/C.E.PriceCatWalksTowardCamera/cat_walks_toward_camera_512kb.mp4')" id="video_2" controls
                                    preload="auto" style="width:100%">
                                 <source src="https://archive.org/download/C.E.PriceCatWalksTowardCamera/cat_walks_toward_camera_512kb.mp4"
                                         type="video/mp4">
@@ -67,14 +67,14 @@
                             </video>
                         </div>
                     </div><hr />
-                   @* <div class="row">
-                        <div class="col-sm-12">
-                             <video class="template-img" id="myvideo" controls
-                                   preload="auto" style="width:100%">
-                                <source src="https://youtu.be/hq3yfQnllfQ"
-                                        type="video/mp4">                                
-                            </video>
-                        </div>
+                    @* <div class="row">
+                    <div class="col-sm-12">
+                    <video class="template-img" id="myvideo" controls
+                    preload="auto" style="width:100%">
+                    <source src="https://youtu.be/hq3yfQnllfQ"
+                    type="video/mp4">
+                    </video>
+                    </div>
                     </div>*@
                 </div>
                 <div class="card-footer"></div>
@@ -178,6 +178,15 @@
     </div>
 </div>
 <script>
+    //const video_S = document.getElementById("video_1");
+
+    //video_S.addEventListener("play", () => {
+    //    function step() {            
+    //        context.drawImage(video_S, 0, 0, canvas.width, canvas.height);
+    //        requestAnimationFrame(step);
+    //    }
+    //    requestAnimationFrame(step);
+    //});
     let change_fontfamily = function() {
         if (current_object_index != null) {
             objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;

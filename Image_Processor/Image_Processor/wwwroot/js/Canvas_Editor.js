@@ -63,17 +63,21 @@ let startY;
 //    width: 200,
 //    height: 200
 //});
-function createPoster(path) {
+function createPoster(path, isStart, value) {
     const video = document.createElement('video');
-    video.src = path + "#t=1";
+    if (isStart) {
+        video.src = path + "#t=" + value;
+    } else {
+        video.src = path + "#t=1";
+    }
     video.autoplay = false;
     video.muted = true;
     var canvas_1 = document.createElement("canvas");
-    canvas_1.style.backgroundColor = "white";
+    //canvas_1.style.backgroundColor = "white";
     canvas_1.width = 350;
     canvas_1.height = 200;
     canvas_1.getContext("2d").drawImage(video, 0, 0, canvas_1.width, canvas_1.height);
-    return canvas_1.toDataURL("image/jpeg");;
+    return canvas_1.toDataURL("image/jpeg");
 }
 let add_image_object = function(path) {
     var image = new Image();
@@ -91,7 +95,7 @@ let add_image_object = function(path) {
 }
 let add_Video_object = function(path) {
     var image = new Image();
-    image.src = createPoster(path);
+    image.src = createPoster(path, false);
     objects.push({
         type: "img",
         isVideo: true,
@@ -382,10 +386,22 @@ let mousedbl_click = function(event) {
             if (object.type == "img" && object.isVideo == true) {
                 current_object_index = index;
                 var video = document.createElement("video");
-                //video.id = "id_1";
+                video.id = "id_" + index;
                 video.src = object.path;
+                //video.crossOrigin = "anonymous";
                 video.play();
-                update_Video(video);
+                video.addEventListener("play", () => {
+                    function step() {
+                        //console.log("called");
+                        var img = new Image();
+                        img.src = object.path + "#t=" + video.currentTime;
+                        //console.log(img.src);
+                        context.drawImage(video, object.x, object.y, object.width, object.height);
+                        requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+                //update_Video(video);
             }
         }
         index++;
@@ -421,7 +437,6 @@ let mouse_move = function(event) {
         event.preventDefault();
         let mouseX = parseInt(event.clientX - offset_x);
         let mouseY = parseInt(event.clientY - offset_Y);
-
         let dx = mouseX - startX;
         let dy = mouseY - startY;
 
