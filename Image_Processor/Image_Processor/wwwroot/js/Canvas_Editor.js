@@ -94,6 +94,10 @@ let add_image_object = function(path) {
     draw_objects();
 }
 let add_Video_object = function(path) {
+    // const video = document.createElement('video');
+    //video.src = path + "#t=0";
+    //video.autoplay = false;
+    //video.muted = true;
     var image = new Image();
     image.src = createPoster(path, false);
     objects.push({
@@ -392,26 +396,17 @@ let mousedbl_click = function(event) {
                 video.play();
                 video.addEventListener("play", () => {
                     function step() {
-                        //console.log("called");
-                        var img = new Image();
-                        img.src = object.path + "#t=" + video.currentTime;
-                        //console.log(img.src);
+                        //if (video.ended) {
+                        //  video.play();
+                        //}
                         context.drawImage(video, object.x, object.y, object.width, object.height);
                         requestAnimationFrame(step);
                     }
                     requestAnimationFrame(step);
                 });
-                //update_Video(video);
             }
         }
         index++;
-    }
-}
-let update_Video = function(video) {
-    if (!video.ended) {
-        let object = objects[current_object_index];
-        context.drawImage(document.getElementById("video_1"), object.x, object.y, object.width, object.height);
-        update_Video(video);
     }
 }
 let mouse_up = function(event) {
@@ -505,8 +500,11 @@ let draw_objects = function() {
 }
 let update_page = function() {
     if (currentPage >= 0) {
+        //var img = new Image();
+        //img.src = document.getElementById('canvas').toDataURL();
+        //img.crossOrigin = "anonymous";
+        //document.getElementById('canvas').crossOrigin = "anonymous";
         var crntPage = "page" + currentPage;
-        console.log(crntPage);
         document.getElementById(crntPage).src = document.getElementById('canvas').toDataURL();
     }
 }
