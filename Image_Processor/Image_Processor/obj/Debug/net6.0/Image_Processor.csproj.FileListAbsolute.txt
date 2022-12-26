@@ -480,8 +480,6 @@ D:\New folder (2)\Image_Processor\Image_Processor\obj\Debug\net6.0\refint\Image_
 D:\New folder (2)\Image_Processor\Image_Processor\obj\Debug\net6.0\Image_Processor.pdb
 D:\New folder (2)\Image_Processor\Image_Processor\obj\Debug\net6.0\Image_Processor.genruntimeconfig.cache
 D:\New folder (2)\Image_Processor\Image_Processor\obj\Debug\net6.0\ref\Image_Processor.dll
-D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\appsettings.Development.json
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\appsettings.json
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Image_Processor.staticwebassets.runtime.json
@@ -499,6 +497,7 @@ D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.B
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.Build.Framework.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Features.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
@@ -539,6 +538,7 @@ D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Comp
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Composition.TypedParts.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Security.Permissions.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Windows.Extensions.dll
@@ -647,6 +647,7 @@ D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\tr\Microsof
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
+D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
 D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.VisualBasic.Features.resources.dll
@@ -721,4 +722,3 @@ D:\Image_Processing\Image_Processor\Image_Processor\obj\Debug\net6.0\refint\Imag
 D:\Image_Processing\Image_Processor\Image_Processor\obj\Debug\net6.0\Image_Processor.pdb
 D:\Image_Processing\Image_Processor\Image_Processor\obj\Debug\net6.0\Image_Processor.genruntimeconfig.cache
 D:\Image_Processing\Image_Processor\Image_Processor\obj\Debug\net6.0\ref\Image_Processor.dll
-D:\Image_Processing\Image_Processor\Image_Processor\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll

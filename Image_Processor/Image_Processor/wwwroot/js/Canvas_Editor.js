@@ -93,6 +93,21 @@ let add_image_object = function(path) {
     });
     draw_objects();
 }
+let add_Gif_object = function(path) {
+    var image = new Image();
+    image.src = path;
+    objects.push({
+        type: "img",
+        isGif: true,
+        img: image,
+        path: path,
+        x: 50,
+        y: 10,
+        width: 200,
+        height: 200
+    });
+    draw_objects();
+}
 let add_Video_object = function(path) {
     // const video = document.createElement('video');
     //video.src = path + "#t=0";
@@ -389,24 +404,28 @@ let mousedbl_click = function(event) {
         if (is_mouse_in_object(startX, startY, object)) {
             if (object.type == "img" && object.isVideo == true) {
                 current_object_index = index;
-                var video = document.createElement("video");
-                video.id = "id_" + index;
-                video.src = object.path;
-                //video.crossOrigin = "anonymous";
-                video.play();
-                video.addEventListener("play", () => {
-                    function step() {
-                        //if (video.ended) {
-                        //  video.play();
-                        //}
-                        context.drawImage(video, object.x, object.y, object.width, object.height);
-                        requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
-                });
             }
         }
         index++;
+    }
+    if (current_object_index != null) {
+        var video = document.createElement("video");
+        video.id = "id_" + current_object_index;
+        video.src = objects[current_object_index].path;
+        video.style.display = "none";
+        document.getElementById("hn_ar").appendChild(video);
+        //video.crossOrigin = "anonymous";
+        video.play();
+        video.addEventListener("play", () => {
+            function step() {
+                //if (video.ended) {
+                //  video.play();
+                //}
+                context.drawImage(video, objects[current_object_index].x, objects[current_object_index].y, objects[current_object_index].width, objects[current_object_index].height);
+                requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
     }
 }
 let mouse_up = function(event) {
@@ -451,6 +470,41 @@ canvas.onmouseup = mouse_up;
 canvas.onmouseout = mouse_out
 canvas.onmousemove = mouse_move;
 
+let recording = false;
+let mediaRecorder;
+let recordedChunks;
+let record = function() {
+    recording = !recording;
+    if (recording) {
+        //recordBtn.textContent = "Stop";
+        const stream = canvas.captureStream(25);
+        mediaRecorder = new MediaRecorder(stream, {
+            mimeType: 'video/webm;codecs=vp9',
+            ignoreMutedMedia: true
+        });
+        recordedChunks = [];
+        mediaRecorder.ondataavailable = e => {
+            if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+            }
+        };
+        mediaRecorder.start();
+    } else {
+        //recordBtn.textContent = "Record"
+        mediaRecorder.stop();
+        setTimeout(() => {
+            const blob = new Blob(recordedChunks, {
+                type: "video/webm"
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "recording.webm";
+            a.click();
+            URL.revokeObjectURL(url);
+        }, 0);
+    }
+}
 let draw_objects = function() {
     context.clearRect(0, 0, canvas_width, canvas_height);
     load_objects();
@@ -496,6 +550,34 @@ let draw_objects = function() {
             context.fill();
         }
     }
+    update_gifs();
+    update_page();
+}
+let obj = null;
+
+function onDrawFrame(ctx, frame) {
+    ctx.drawImage(frame.buffer, obj.x, obj.y, obj.width, obj.height);
+}
+let update_gifs = function() {
+    var index = 0;
+    for (let object of objects) {
+        if (object.type == "img") {
+            if (object.isGif == true) {
+                // if (document.getElementById("gif_" + index) == null) {
+                //     console.log("new gifs");
+                //     var img = document.createElement("img");
+                //     img.src = object.path;
+                //     img.id = "gif_" + index;
+                //     //img.style.display = "none";
+                //     document.getElementById("hn_ar").appendChild(img);
+                // }
+                // context.drawImage(document.getElementById("gif_" + index), object.x, object.y, object.width, object.height);
+                obj = object;
+                gifler(object.path).frames(canvas, onDrawFrame);
+                index++;
+            }
+        }
+    }
     update_page();
 }
 let update_page = function() {
@@ -519,20 +601,22 @@ let load_objects = function() {
     objects = pages[currentPage];
 }
 let find_max_width = function(lines) {
-        let max_width = 0;
-        for (var i = 0; i < lines.length; i++) {
-            if (context.measureText(lines[i]).width > max_width) {
-                max_width = context.measureText(lines[i]).width;
-            }
+    let max_width = 0;
+    for (var i = 0; i < lines.length; i++) {
+        if (context.measureText(lines[i]).width > max_width) {
+            max_width = context.measureText(lines[i]).width;
         }
-        return max_width;
     }
-    //var _video = document.querySelectorAll("video");
-    //_video.addEventListener('play', (event) => {
-    //  if (this.custom == "yes") {
-    //    console.log(_video);
-    //  let object = objects[this.index];
-    //context.drawImage(this, object.x, object.y, object.width, object.height);
-    //}
-    //});
+    return max_width;
+}
+
+//var _video = document.querySelectorAll("video");
+//_video.addEventListener('play', (event) => {
+//  if (this.custom == "yes") {
+//    console.log(_video);
+//  let object = objects[this.index];
+//context.drawImage(this, object.x, object.y, object.width, object.height);
+//}
+//});
 draw_objects();
+//setInterval(update_gifs, 1);

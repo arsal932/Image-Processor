@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EyMh6+Kkxyp7KX9/aoTYnbNXVfOtl+nBeA8ofkJlA04=",
+  "Hash": "kAjLnCdpT5+pl7cCcncjhJlKYtuZFUUhKxpITlV9d8k=",
   "Source": "Image_Processor",
   "BasePath": "_content/Image_Processor",
   "Mode": "Default",
@@ -2548,6 +2548,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\css\\alt\\adminlte.plugins.min.css.map"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\Gifs\\Rotating_earth_(large).gif",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "dist/Gifs/Rotating_earth_(large).gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\Gifs\\Rotating_earth_(large).gif"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\img\\AdminLTELogo.png",
@@ -6067,6 +6084,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Canvas_Editor.js"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\js\\gifler.js",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "js/gifler.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\gifler.js"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\js\\ImageEditor.js",

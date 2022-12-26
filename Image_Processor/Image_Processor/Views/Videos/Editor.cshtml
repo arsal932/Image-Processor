@@ -78,6 +78,11 @@
                             </video>
                         </div>
                     </div><hr />
+                     <div class="row">
+                        <div class="col-sm-12">
+                            <img id="gif1" onclick="add_Gif_object('/dist/gifs/Rotating_earth_(large).gif')" class="template-img" height="200" src="~/dist/gifs/Rotating_earth_(large).gif" />
+                        </div>
+                    </div><hr />
                     @* <div class="row">
                     <div class="col-sm-12">
                     <video class="template-img" id="myvideo" controls
@@ -125,7 +130,7 @@
                     <button class="btn btn-info" onclick="download()">Save</button>
                 </div>
                 <div class="col-sm-1">
-                    <button class="btn btn-info" onclick="download()">Save</button>
+                    <button class="btn btn-info" onclick="record()">Record</button>
                 </div>
                 <div class="col-sm-1" id="background_color" style="display:none">
                     <small>B.Color</small>
@@ -188,9 +193,13 @@
                     </div>
                 </div>
             </div><hr />
+            <div class="row" id=hn_ar>
+
+            </div>
         </div>
     </div>
 </div>
+<script src="~/js/gifler.js"></script>
 <script>
     //const video_S = document.getElementById("video_1");
 
@@ -300,12 +309,26 @@
     function imageIsLoaded(e) {
         add_image_object(e.target.result);
     }
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
     let delete_object = function() {
-        if (current_object_index != null) {
-            objects.splice(current_object_index, current_object_index);
-            current_object_index = null;
-            draw_objects();
-        }
+        sleep(1000).then(() => {
+            if (current_object_index != null) {
+                const element = document.getElementById("id_" + current_object_index);                
+                element.remove();
+                if(objects.length>1)
+                {
+                    objects.splice(current_object_index, current_object_index);
+                }                
+                else{
+                    objects=null;
+                    alert(objects);
+                }
+                current_object_index = null;
+                draw_objects();
+            }
+        });
     }
 
 
