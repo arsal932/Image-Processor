@@ -84,6 +84,8 @@ let add_image_object = function(path) {
     image.src = path;
     objects.push({
         type: "img",
+        isVideo: false,
+        isGif: false,
         img: image,
         path: path,
         x: 50,
@@ -99,6 +101,7 @@ let add_Gif_object = function(path) {
     objects.push({
         type: "img",
         isGif: true,
+        isVideo: false,
         img: image,
         path: path,
         x: 50,
@@ -118,6 +121,7 @@ let add_Video_object = function(path) {
     objects.push({
         type: "img",
         isVideo: true,
+        isGif: false,
         img: image,
         path: path,
         x: 50,
@@ -342,6 +346,7 @@ function change_label_text() {
 let mouse_down = function(event) {
     event.preventDefault();
     hide_elements("background_color");
+    hide_elements("img_els");
     hide_elements_of_label();
     startX = parseInt(event.clientX - offset_x);
     startY = parseInt(event.clientY - offset_Y);
@@ -353,6 +358,9 @@ let mouse_down = function(event) {
             is_dragging = true;
             isFound = true;
             //show_elements("btn_delete_ob");
+            if (object.type == "img" && !object.isVideo && !object.isGif) {
+                show_elements("img_els");
+            }
             if (object.type != "text") {
                 //show_elements("resize_plus");
                 //show_elements("resize_minus");

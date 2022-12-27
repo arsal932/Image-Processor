@@ -64,7 +64,7 @@ public class ImagesController : Controller
     public IActionResult ImageEditor()
     {
         ViewBag.page = "Image Editor";
-        return View();
+        return PartialView();
     }
 
     public void MakeVideoFromImage()

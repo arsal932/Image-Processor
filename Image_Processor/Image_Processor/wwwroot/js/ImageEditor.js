@@ -25,6 +25,11 @@ const loadImage = () => {
 const applyFilter = () => {
     previewImg.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
     previewImg.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+    console.log(current_object_index);
+    if (current_object_index != null) {
+        objects[current_object_index].img = previewImg; 
+        draw_objects();
+    }    
 }
 
 filterOptions.forEach(option => {
@@ -120,6 +125,7 @@ const saveImage = () => {
 //    t = ele.value;
 //    document.getElementById('theText').innerHTML = t.replace(/\n\r?/g, '<br />');
 //}
+
 filterSlider.addEventListener("input", updateFilter);
 resetFilterBtn.addEventListener("click", resetFilter);
 saveImgBtn.addEventListener("click", saveImage);

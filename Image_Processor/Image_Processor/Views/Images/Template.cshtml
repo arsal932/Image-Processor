@@ -101,6 +101,9 @@
                     <small>B.Color</small>
                     <input onchange="change_object_color('_color')" type="color" id="_color" />
                 </div>
+                <div class="col-sm-1" id="img_els" style="display:none;">
+                    <button class="btn btn-default" onclick="loadView('/Images/ImageEditor','Modal-xl','ModalxlContent')">Edit Image</button>
+                </div>
                 @*<div class=col-sm-1>
                 <small id="bold_text" onclick="bold_text()"><b>Edit label</b></small>
                 </div>*@
@@ -155,17 +158,47 @@
                     <button class="btn btn-default" onclick="add_page()">New Page</button>
                     <div id="pages_list">
                         <img style="border:solid;border-width:0.01px;border-color:green" onclick="load_pg(this)" index="0" id="page0" class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
-                    </div>                    
+                    </div>
                 </div>
             </div><hr />
+        </div>
+        <div id='Modal-xl' class='modal'>
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div id='ModalxlContent'></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 <script>
+    function loadView(url, modalId, modalContentID, id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list": id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+                if(current_object_index!=null){
+                    var img = document.getElementById("prvw_img");
+                img.src = objects[current_object_index].path;
+                }                
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
     let change_fontfamily = function() {
         if (current_object_index != null) {
-            objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;
-            console.log(objects[current_object_index].fontFamily);
+            objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;            
             draw_objects();
         }
     }
@@ -187,7 +220,7 @@
         objects = pages[currentPage];
         dis_pg();
         document.getElementById("pages_list").innerHTML +=
-            "<img id='page" + currentPage + "' style='border:solid;border-width:0.01px;border-color:green' onclick='load_pg(this)' index='"+currentPage+"' class='grid-box page' src='~/dist/img/image-placeholder.svg' height='100' width='100' /> ";
+            "<img id='page" + currentPage + "' style='border:solid;border-width:0.01px;border-color:green' onclick='load_pg(this)' index='" + currentPage + "' class='grid-box page' src='~/dist/img/image-placeholder.svg' height='100' width='100' /> ";
         draw_objects();
     }
     let dis_pg = function() {
@@ -197,12 +230,12 @@
             }
         }
     }
-    let load_pg=function(ob){               
-        currentPage =parseInt(ob.getAttribute("index"));
+    let load_pg = function(ob) {
+        currentPage = parseInt(ob.getAttribute("index"));
         dis_pg();
-        document.getElementById("page" + currentPage).style.borderColor = "green";        
+        document.getElementById("page" + currentPage).style.borderColor = "green";
         objects = [];
-        objects = pages[currentPage];        
+        objects = pages[currentPage];
         draw_objects();
     }
     function resize_add() {
@@ -249,8 +282,8 @@
     function upload(img) {
         var file = img.files[0];
         var imagefile = file.type;
-        var match = ["image/jpeg", "image/png", "image/jpg","image/gif"];
-        if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2])|| (imagefile == match[3]))) {
+        var match = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
+        if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]) || (imagefile == match[3]))) {
             alert("Invalid File Extension");
         } else {
             var reader = new FileReader();

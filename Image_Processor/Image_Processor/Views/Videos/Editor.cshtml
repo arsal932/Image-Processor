@@ -78,11 +78,11 @@
                             </video>
                         </div>
                     </div><hr />
-                     <div class="row">
+                     @*<div class="row">
                         <div class="col-sm-12">
                             <img id="gif1" onclick="add_Gif_object('/dist/gifs/Rotating_earth_(large).gif')" class="template-img" height="200" src="~/dist/gifs/Rotating_earth_(large).gif" />
                         </div>
-                    </div><hr />
+                    </div><hr />*@
                     @* <div class="row">
                     <div class="col-sm-12">
                     <video class="template-img" id="myvideo" controls
@@ -135,6 +135,14 @@
                 <div class="col-sm-1" id="background_color" style="display:none">
                     <small>B.Color</small>
                     <input onchange="change_object_color('_color')" type="color" id="_color" />
+                </div>
+                <div class="col-sm-1" id="img_filters">
+                    <select class="form-control" id="sel_filters">
+                        <option selected value="1">Brightness</option>
+                        <option value="2">Saturation</option>
+                        <option value="3">Inversion</option>
+                        <option value="4">Grayscale</option>
+                    </select>
                 </div>
                 @*<div class=col-sm-1>
                 <small id="bold_text" onclick="bold_text()"><b>Edit label</b></small>
