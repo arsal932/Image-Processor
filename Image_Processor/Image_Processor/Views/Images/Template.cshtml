@@ -186,19 +186,22 @@
                 $('#' + modalContentID).html(data);
                 $('#' + modalId).modal(options);
                 $('#' + modalId).modal('show');
-                if(current_object_index!=null){
+                if (current_object_index != null) {
                     var img = document.getElementById("prvw_img");
-                img.src = objects[current_object_index].path;
-                }                
+                    img.src = objects[current_object_index].path;
+                }
             },
             error: function() {
                 alert("An error has occured while loading form.");
             }
         });
     };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
+    }
     let change_fontfamily = function() {
         if (current_object_index != null) {
-            objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;            
+            objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;
             draw_objects();
         }
     }
@@ -302,6 +305,18 @@
         }
     }
 
+    function updateImage() {
+        if (current_object_index != null) {
+            var obj = objects[current_object_index];
+            var img = new Image();
+            img.src = obj.path;          
+            img.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
+            img.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+            obj.img = img;            
+            objects[current_object_index] = obj;
+            draw_objects();
+        }
+    }
 
 </script>
 <script src="~/js/Canvas_Editor.js"></script>

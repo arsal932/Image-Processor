@@ -152,11 +152,19 @@ body {
     outline: none;
     color: #fff;
     cursor: pointer;
-    background: none;
+    /*background: none;*/
     transition: all 0.3s ease;
     text-transform: uppercase;
 }
+.controls .save {
+    color:cornflowerblue;
+    border: 1px solid #6C757D;
+}
 
+    .controls .reset-filter:hover {
+        color: #fff;
+        background: #6C757D;
+    }
 .controls .reset-filter {
     color: #6C757D;
     border: 1px solid #6C757D;
