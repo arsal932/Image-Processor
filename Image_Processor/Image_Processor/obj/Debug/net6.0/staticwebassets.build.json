@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kAjLnCdpT5+pl7cCcncjhJlKYtuZFUUhKxpITlV9d8k=",
+  "Hash": "XO8L9UZlkdkiD5PrW4OyWdSVj1oadTli1fz4kOacuas=",
   "Source": "Image_Processor",
   "BasePath": "_content/Image_Processor",
   "Mode": "Default",
@@ -2072,6 +2072,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\Audio\\file_example_MP3_700KB.mp3",
+      "SourceId": "Image_Processor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\",
+      "BasePath": "_content/Image_Processor",
+      "RelativePath": "dist/Audio/file_example_MP3_700KB.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\Audio\\file_example_MP3_700KB.mp3"
     },
     {
       "Identity": "D:\\Image_Processing\\Image_Processor\\Image_Processor\\wwwroot\\dist\\css\\adminlte.css",

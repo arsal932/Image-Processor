@@ -69,6 +69,11 @@
                     </div><hr />
                     <div class="row">
                         <div class="col-sm-12">
+                            <audio id="audio-player" controls="controls" src="~/dist/Audio/file_example_MP3_700KB.mp3" type="audio/mpeg"></audio>
+                        </div>
+                    </div><hr />
+                     <div class="row">
+                        <div class="col-sm-12">
                             <video class="template-img" onclick="add_Video_object('/dist/Videos/cat_walks_toward_camera_512kb.mp4')" id="video_2" controls
                                    preload="auto" style="width:100%">
                                 <source src="~/dist/Videos/cat_walks_toward_camera_512kb.mp4"
@@ -135,6 +140,9 @@
                 <div class="col-sm-1" id="background_color" style="display:none">
                     <small>B.Color</small>
                     <input onchange="change_object_color('_color')" type="color" id="_color" />
+                </div>
+                <div class="col-sm-1" id="img_els" style="display:none;">
+                    <button class="btn btn-default" onclick="loadView('/Images/ImageEditor','Modal-xl','ModalxlContent')">Edit Image</button>
                 </div>
                 <div class="col-sm-1" id="img_filters">
                     <select class="form-control" id="sel_filters">
@@ -209,6 +217,32 @@
 </div>
 <script src="~/js/gifler.js"></script>
 <script>
+    function loadView(url, modalId, modalContentID, id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list": id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+                if (current_object_index != null) {
+                    var img = document.getElementById("prvw_img");
+                    img.src = objects[current_object_index].path;
+                }
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
+    }
     //const video_S = document.getElementById("video_1");
 
     //video_S.addEventListener("play", () => {
@@ -337,6 +371,18 @@
                 draw_objects();
             }
         });
+    }
+    function updateImage() {
+        if (current_object_index != null) {
+            var obj = objects[current_object_index];
+            var img = new Image();
+            img.src = obj.path;          
+            img.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
+            img.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+            obj.img = img;            
+            objects[current_object_index] = obj;
+            draw_objects();
+        }
     }
 
 
