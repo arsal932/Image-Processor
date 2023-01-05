@@ -475,7 +475,7 @@ td {
     }
 
 .template-img {
-    width: 100%;    
+    width: 100%;
 }
 
     .template-img:hover {
@@ -483,5 +483,105 @@ td {
         border-width: 0.1px;
         border-color: deepskyblue;
         cursor: pointer;
-        opacity:0.5;
+        opacity: 0.5;
     }
+
+.gallery_item_green {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: white;
+    color: green;
+}
+
+    .gallery_item_green:hover {
+        background-color: green;
+        color: white;
+    }
+
+.gallery_item_blue {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    color: #3b0388;
+    background-color: white
+}
+
+    .gallery_item_blue:hover {
+        background-color: #3b0388;
+        color: white;
+    }
+
+.gallery_item_cyan {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    color: rgba(6,189,196,0.78);
+    background-color: white
+}
+
+    .gallery_item_cyan:hover {
+        background-color: rgba(6,189,196,0.78);
+        color: white;
+    }
+
+.gallery_item_yellow {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    color: rgb(255, 153, 0);
+    background-color: white
+}
+
+    .gallery_item_yellow:hover {
+        background-color: rgb(255, 153, 0);
+        color: white;
+    }
+
+.gallery_item_red {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    color: rgb(255, 81, 84);
+    background-color: white
+}
+
+    .gallery_item_red:hover {
+        background-color: rgb(255, 81, 84);
+        color: white;
+    }
+
+.gallery_item_purple {
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    color: rgb(210, 105, 230);
+    background-color: white
+}
+
+    .gallery_item_purple:hover {
+        background-color: rgb(210, 105, 230);
+        color: white;
+    }
+
+.item_margin {
+    margin-right: 50px;
+}
