@@ -1,0 +1,26 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="modal-header">
+    <h4 class="modal-title">Delete Project</h4>
+    <button onclick="hideView('myModal')" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form asp-action="Delete" method="post">
+    <div class="modal-body">
+        <div class="text-danger">@ViewBag.Message</div>
+        <div class="input-group mb-3">
+            <div class="col-sm-12">
+                <p>
+                    Are you sure to delete Untitled (Project)? All the information related to Untitled will be deleted.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-between">
+        <button type="button" onclick="hideView('myModal')" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" onclick="hideView('myModal')" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+    </div>
+</form>   

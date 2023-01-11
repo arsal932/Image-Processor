@@ -2,27 +2,6 @@
     ViewData["Title"] = "Projects";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <style>
-        .nav_projects{
-            font-size: small;
-            font-weight: 500;
-            color:#999999;
-        }
-        .nav_projects:hover{
-            color:#505050;
-            border-bottom: solid;
-            border-bottom-color: blue;
-            border-bottom-width:2px ;
-        }
-        .nav_projects_active{
-            color:#505050;
-            border-bottom: solid;
-            border-bottom-color: blue;
-            border-bottom-width:2px ;
-        }
-    </style>
-</head>
 
 <section class="content">
     <div class="container-fluid">
@@ -34,39 +13,40 @@
                         <span class="input-group-text"><i class="fa fa-folder" style="color:#17a2b8"></i></span>
                     </div>
                     <select class="form-control">
-                        <option selected>All projects</option>
-                        <option>Your projects</option>
-                        <option>Shared with you</option>
+                        <option selected>All</option>
+                        <option>Designs</option>
+                        <option>Images</option>
+                        <option>Videos</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <span class="nav_projects nav_projects_active">All</span>
-            </div>
-            <div class="col-sm-1">
-                <span class="nav_projects">Designs</span>
-            </div>
-            <div class="col-sm-1">
-                <span class="nav_projects">Images</span>
-            </div>
-            <div class="col-sm-1">
-                <span class="nav_projects">Videos</span>
-            </div>
+        @*<div class="row">
+        <div class="col-sm-1">
+        <span class="nav_projects nav_projects_active">All</span>
+        </div>
+        <div class="col-sm-1">
+        <span class="nav_projects">Designs</span>
+        </div>
+        <div class="col-sm-1">
+        <span class="nav_projects">Images</span>
+        </div>
+        <div class="col-sm-1">
+        <span class="nav_projects">Videos</span>
+        </div>
 
-        </div><br />
+        </div>*@<br />
         <h5><b>Recent</b></h5>
         <div class="row">
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <img src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" class="template-img" style="border-radius:6px;width:100%;height:100%" alt="Image">
+                    <img src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" style="border-radius:6px;width:100%;height:100%" alt="Image">
                 </div>
                 <center style="font-size:12px;font-weight:600;">Title</center>
             </div>
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <video class="template-img" loop autoplay muted style="border-radius:6px;width:100%;height:100%">
+                    <video  loop autoplay muted style="border-radius:6px;width:100%;height:100%">
                         <source src="~/dist/Videos/cat_walks_toward_camera_512kb.mp4"
                                 type="video/mp4">
                         <source src="~/dist/Videos/cat_walks_toward_camera_512kb.ogg"
@@ -75,9 +55,9 @@
                 </div>
                 <center style="font-size:12px;font-weight:600;">Title</center>
             </div>
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <video class="template-img" loop autoplay muted style="border-radius:6px;width:100%;height:100%">
+                    <video  loop autoplay muted style="border-radius:6px;width:100%;height:100%">
                         <source src="~/dist/Videos/Canvas.move_.mp4"
                                 type="video/mp4">
                         <source src="~/dist/Videos/Canvas.move_.ogg"
@@ -86,55 +66,96 @@
                 </div>
                 <center style="font-size:12px;font-weight:600;">Title</center>
             </div>
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <img src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" class="template-img" style="border-radius:6px;width:100%;height:100%" alt="Image">
+                    <img src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" style="border-radius:6px;width:100%;height:100%" alt="Image">
                 </div>
                 <center style="font-size:12px;font-weight:600;">Title</center>
             </div>
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <video class="template-img" loop autoplay muted style="border-radius:6px; width:100%;height:100%">
+                    <video loop autoplay muted style="border-radius:6px; width:100%;height:100%">
                         <source src="~/dist/Videos/recording (1).webm"
                                 type="video/mp4">
                     </video>
                 </div><center style="font-size:12px;font-weight:600;">Title</center>
             </div>
-            <div class="col-sm-2" style="height:150px; padding:5px;">
+            <div class="col-sm-2 template-img" style="height:150px; padding:5px;">
                 <div style="background-color:rgb(235,235,235);padding:20px; height:100%;width:100%">
-                    <img src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" class="template-img" style="border-radius:6px; width:100%;height:100%" alt="Image">
+                    <img src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg"  style="border-radius:6px; width:100%;height:100%" alt="Image">
                 </div><center style="font-size:12px;font-weight:600;">Title</center>
             </div>
         </div>
         <br />
         <hr />
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th style="text-align:center">Name</th>
-                    <th style="text-align:center">People</th>
-                    <th style="text-align:center">Type</th>
-                    <th style="text-align:center">Edited</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" style="border-radius:6px;" width="60" height="60" alt="Image">
-                        <span style="padding-top:30px;"><b>Untitled</b></span>
-                    </td>
-                    <td style="padding-top:30px;">John</td>
-                    <td style="padding-top:30px;">Doe</td>
-                    <td style="padding-top:30px;">john@example.com</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Your projects</h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0" id="list">
+                       
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+         <div id='myModal' class='modal'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id='myModalContent'></div>
+                    </div>
+                </div>
+
+            </div>
     </div>
 
 </section>
 <script>
-
+     function Load() {
+        document.getElementById("list").innerHTML = '<center><span>Loading... <i class="spinner fa fa-sync fa-spin"></i></span></center>';
+        $("#list").load("/Projects/GetList");
+    }
     window.onload = function() {
         //document.getElementById("nav_gallery").classList.add("active");
+        Load();
+    }
+    function loadView(url, modalId, modalContentID,id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list":id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
     }
 </script>

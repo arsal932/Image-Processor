@@ -386,7 +386,7 @@ hr {
 .login-body {
     background-color: #17a2b8;
 }
-
+/*
 .tableHeader_Footer {
     color: #656565;
     text-align: center;
@@ -394,7 +394,7 @@ hr {
 
 td {
     text-align: center;
-}
+}*/
 
 .container {
     position: relative;
@@ -584,4 +584,36 @@ td {
 
 .item_margin {
     margin-right: 50px;
+}
+.nav_projects {
+    font-size: small;
+    font-weight: 500;
+    color: #999999;
+}
+
+.td_size {
+    font-size: 14px;
+}
+
+.td_pad {
+    padding-top: 30px;
+}
+
+.project_title {
+    font-weight: 500;
+}
+
+.nav_projects:hover {
+    color: #505050;
+    border-bottom: solid;
+    border-bottom-color: blue;
+    border-bottom-width: 2px;
+}
+
+
+.nav_projects_active {
+    color: #505050;
+    border-bottom: solid;
+    border-bottom-color: blue;
+    border-bottom-width: 2px;
 }
