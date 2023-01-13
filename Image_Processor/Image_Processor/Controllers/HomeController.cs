@@ -17,7 +17,14 @@ namespace Image_Processor.Controllers
         {            
             return View();
         }
-
+        public IActionResult Templates()
+        {
+            return View();
+        }
+        public IActionResult ContentPlanner()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
