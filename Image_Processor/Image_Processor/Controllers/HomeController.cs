@@ -21,6 +21,29 @@ namespace Image_Processor.Controllers
         {
             return View();
         }
+        public IActionResult CreateEvent()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public IActionResult CreateEvent(string obj)
+        {
+            return RedirectToAction("CreateEvent");
+        }
+        public IActionResult EditEvent()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public IActionResult EditEvent(string obj)
+        {
+            return RedirectToAction("CreateEvent");
+        }
+        [HttpPost]
+        public IActionResult DeleteEvent(string obj)
+        {
+            return RedirectToAction("CreateEvent");
+        }
         public IActionResult ContentPlanner()
         {
             return View();
@@ -34,6 +57,10 @@ namespace Image_Processor.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Test()
+        {
+            return View();
         }
     }
 }
