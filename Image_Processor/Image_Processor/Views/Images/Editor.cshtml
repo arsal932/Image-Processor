@@ -1,0 +1,319 @@
+﻿@{
+    ViewData["Title"] = "Template";
+    Layout = "~/Views/Shared/EditorLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card" id="shapes_panel" style="max-height:90%;overflow:scroll;display:none">
+                <div class="card-header">
+                    <center><h5>Shapes</h5></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img id="rect_shape" style="width:100%" onclick="add_rectangle_shape_object('rect')" class="template-img" height="70" src="~/dist/img/shapes/rectangle.png" />
+                        </div>
+                        <div class="col-sm-6">
+                            <img id="sqaure_shape" style="width:100%" onclick="add_square_shape_object('rect')" class="template-img" height="70" src="~/dist/img/shapes/sqaure.png" />
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img id="circle_shape" style="width:100%" onclick="add_circle_shape_object('circle')" class="template-img" height="70" src="~/dist/img/shapes/circle.png" />
+                        </div>
+                        @* <div class="col-sm-6">
+                        <img id="oval_shape" style="width:100%" onclick="add_oval_shape_object('oval')" class="template-img" height="70" src="~/dist/img/shapes/oval.png" />
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="upload_panel" style="max-height:90%;overflow:scroll;display:none">
+                <div class="card-header">
+                    <center><h5>Upload</h5></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input id="file_upload" onchange="upload(this)" type="file" />
+                        </div>
+                    </div><hr />
+                </div>
+            </div>
+            <div id="templates_panel" class="card" style="max-height:90%;overflow:scroll;display:none;">
+                <div class="card-header">
+                    <center><h5>Templates</h5></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img id="image1" onclick="add_image_object('/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/anita-austvika-chRIgTHFBy0-unsplash.jpg" />
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img id="image2" onclick="add_image_object('/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" />
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img id="image3" onclick="add_image_object('/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg')" class="template-img" height="200" src="~/dist/img/tom-morbey-H7mzAJ8jTMg-unsplash.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+            <div id="text_panel" class="card" style="display:none;">
+                <div class="card-header">
+                    <center><h5>Labels</h5></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button onclick="add_label_object()" class="btn btn-info btn-block">Add Label</button>
+                        </div>
+                    </div><hr />
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <hr />
+            <div class="row">
+                <div class="col-sm-2" id="btn_delete_page">
+                    <button class="btn btn-danger">Delete Page</button>
+                </div>
+                <div class="col-sm-3">
+                    <button id="resize_plus" class="btn btn-default" onclick="resize_min()">-</button>
+                    <input id="resize_value" style="width:15%" type="number" min="1" step="1" value="1" placeholder="Increment" />
+                    <button id="resize_minus" class="btn btn-default" onclick="resize_add()">+</button>
+                </div>
+                <div class="col-sm-1">
+                    <button onclick="delete_object()" id="btn_delete_ob" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-sm-1">
+                    <button class="btn btn-info" onclick="download()">Save</button>
+                </div>
+                <div class="col-sm-1" id="background_color" style="display:none">
+                    <small>B.Color</small>
+                    <input onchange="change_object_color('_color')" type="color" id="_color" />
+                </div>
+                <div class="col-sm-1" id="img_els" style="display:none;">
+                    <button class="btn btn-default" onclick="loadView('/Images/ImageEditor','Modal-xl','ModalxlContent')">Edit Image</button>
+                </div>               
+                <div class="col-sm-2" id="text_els" style="display:none">
+                    <button id="bold_text" class="btn btn-default" style="font-weight: bold;" onclick="bold_text()">Bold</button>
+                    <button id="italic_text" class="btn btn-default" style="font-style:italic;" onclick="italic_text()">Italic</button>
+                    <button class="btn btn-default" onclick="toupper_text()">A</button>
+                    <button class="btn btn-default" onclick="tolower_text()">a</button>
+                </div>
+                <div class="col-sm-1" id="text_el_fs" style="display:none;width:30%">
+
+                    <input oninput="change_font_size()" id="size_text" type="number" min="1" max="100" placeholder="font size" />
+                </div>
+                <div class="col-sm-1" id="text_el_fc" style="display:none">
+                    <small>F.Color</small>
+                    <input onchange="change_font_color()" type="color" id="text_color" />
+                </div>
+                <div class="col-sm-1" id="text_el_ff" style="display:none">
+                    <select class="form-select" id="fontfamily_text" onchange="change_fontfamily()">
+                        <option value="">Select</option>
+                        <option disabled style="font-weight: bold; background-color: #EEEEEE">Serif Fonts</option>
+                        <option value="Georgia" style="font-family: Georgia,serif">Georgia</option>
+                        <option value="Palatino Linotype" style="font-family: Palatino Linotype,Book Antiqua,Palatino,serif">Palatino Linotype</option>
+                        <option value="Times New Roman" style="font-family: Times New Roman,Times,serif">Times New Roman</option>
+                        <option disabled style="font-weight: bold; background-color: #EEEEEE">Sans-Serif Fonts</option>
+                        <option value="Arial" style="font-family: Arial,Helvetica,sans-serif">Arial</option>
+                        <option value="Arial Black" style="font-family: Arial Black,Gadget,sans-serif">Arial Black</option>
+                        <option value="Comic Sans MS" style="font-family: Comic Sans MS,cursive,sans-serif">Comic Sans MS</option>
+                        <option value="Impact" style="font-family: Impact,Charcoal,sans-serif">Impact</option>
+                        <option value="Lucida Sans Unicode" style="font-family: Lucida Sans Unicode,Lucida Grande,sans-serif">Lucida Sans Unicode</option>
+                        <option selected="selected" value="Tahoma,Geneva,sans-serif" style="font-family: Tahoma,Geneva,sans-serif">Tahoma</option>
+                        <option value="Trebuchet MS" style="font-family: Trebuchet MS,Helvetica,sans-serif">Trebuchet MS</option>
+                        <option value="Verdana" style="font-family: Verdana,Geneva,sans-serif">Verdana</option>
+                        <option disabled style="font-weight: bold; background-color: #EEEEEE">Monospace Fonts</option>
+                        <option value="Courier New" style="font-family: Courier New,Courier,monospace">Courier New</option>
+                        <option value="Lucida Console" style="font-family: Lucida Console,Monaco,monospace">Lucida Console</option>
+                    </select>
+                </div>
+                <div class="col-sm-2" id="text_el_t" style="display:none">
+                    <textarea oninput="change_label_text()" rows="1" cols="40" id="label_text">
+                            </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <canvas id="canvas" style="border:solid;border-width:0.01px; border-color:grey;background-color:rgb(280,280,280);width:100%;height:100%"></canvas>
+                </div>
+            </div><hr />
+            <div class="row">
+
+                <div class="col-sm-12" style="overflow-x:scroll">
+                    <button class="btn btn-default" onclick="add_page()">New Page</button>
+                    <div id="pages_list">
+                        <img style="border:solid;border-width:0.01px;border-color:green" onclick="load_pg(this)" index="0" id="page0" class="grid-box" src="~/dist/img/mitchell-orr-2G4_KMJ4b9s-unsplash.jpg" height="100" width="100" />
+                    </div>
+                </div>
+            </div><hr />
+        </div>
+        <div id='Modal-xl' class='modal'>
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div id='ModalxlContent'></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function loadView(url, modalId, modalContentID, id) {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "list": id },
+            datatype: "json",
+
+            success: function(data) {
+                $('#' + modalContentID).html(data);
+                $('#' + modalId).modal(options);
+                $('#' + modalId).modal('show');
+                if (current_object_index != null) {
+                    var img = document.getElementById("prvw_img");
+                    img.src = objects[current_object_index].path;
+                }
+            },
+            error: function() {
+                alert("An error has occured while loading form.");
+            }
+        });
+    };
+    function hideView(ModalID) {
+        $('#' + ModalID).modal('hide');
+    }
+    let change_fontfamily = function() {
+        if (current_object_index != null) {
+            objects[current_object_index].fontFamily = document.getElementById("fontfamily_text").value;
+            draw_objects();
+        }
+    }
+    var download = function() {
+        var link = document.createElement('a');
+        link.download = 'filename.png';
+        link.href = document.getElementById('canvas').toDataURL();
+        //document.getElementById("image1").src = link.href;
+        link.click();
+    }
+    let add_page = function() {
+        emptyObjects = [];
+        pages.push(emptyObjects);
+        if (currentPage >= 0) {
+            currentPage = pages.length - 1;
+        } else {
+            currentPage = 0;
+        }
+        objects = pages[currentPage];
+        dis_pg();
+        document.getElementById("pages_list").innerHTML +=
+            "<img id='page" + currentPage + "' style='border:solid;border-width:0.01px;border-color:green' onclick='load_pg(this)' index='" + currentPage + "' class='grid-box page' src='~/dist/img/image-placeholder.svg' height='100' width='100' /> ";
+        draw_objects();
+    }
+    let dis_pg = function() {
+        for (var i = 0; i < pages.length; i++) {
+            if (i != currentPage) {
+                document.getElementById("page" + i).style.borderColor = "rgb(211,211,211)";
+            }
+        }
+    }
+    let load_pg = function(ob) {
+        currentPage = parseInt(ob.getAttribute("index"));
+        dis_pg();
+        document.getElementById("page" + currentPage).style.borderColor = "green";
+        objects = [];
+        objects = pages[currentPage];
+        draw_objects();
+    }
+    function resize_add() {
+        var value = parseInt(document.getElementById("resize_value").value);
+        if (current_object_index != null) {
+            var obj = objects[current_object_index];
+            if (obj.type != "text") {
+                if (obj.type == "circle") {
+                    obj.radius = obj.radius + value;
+                }
+                if (obj.type == "rect") {
+                    obj.width = obj.width + value;
+                    obj.height = obj.height + (value / 2);
+                }
+                else {
+                    obj.width = obj.width + value;
+                    obj.height = obj.height + value;
+                }
+            }
+        }
+        draw_objects();
+    }
+    function resize_min() {
+        var value = parseInt(document.getElementById("resize_value").value);
+        if (current_object_index != null) {
+            var obj = objects[current_object_index];
+            if (obj.type != "text") {
+                if (obj.type == "circle") {
+                    obj.radius = obj.radius - value;
+                }
+                if (obj.type == "rect") {
+                    obj.width = obj.width - value;
+                    obj.height = obj.height - (value / 2);
+                }
+                else {
+                    obj.width = obj.width - value;
+                    obj.height = obj.height - value;
+                }
+            }
+        }
+        draw_objects();
+    }
+
+    function upload(img) {
+        var file = img.files[0];
+        var imagefile = file.type;
+        var match = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
+        if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]) || (imagefile == match[3]))) {
+            alert("Invalid File Extension");
+        } else {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(img.files[0]);
+        }
+    }
+    function imageIsLoaded(e) {
+        add_image_object(e.target.result);
+    }
+    let delete_object = function() {
+        if (current_object_index != null) {
+            objects.splice(current_object_index, current_object_index);
+            current_object_index = null;
+            draw_objects();
+        }
+    }
+
+    function updateImage() {
+        if (current_object_index != null) {
+            var obj = objects[current_object_index];
+            var img = new Image();
+            img.src = obj.path;          
+            img.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
+            img.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+            obj.img = img;            
+            objects[current_object_index] = obj;
+            draw_objects();
+        }
+    }
+
+</script>
+<script src="~/js/Canvas_Editor.js"></script>

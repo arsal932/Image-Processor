@@ -31,10 +31,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Image_Processing/Image_Processor/Image_Processor/Views/Collages/Maker.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sbGFnZXNcTWFrZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Home/ContentPlanner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250ZW50UGxhbm5lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,6 +41,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Home/EditEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0RXZlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Home/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Home/Index.cshtml]
@@ -59,16 +59,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZW1wbGF0ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Image_Processing/Image_Processor/Image_Processor/Views/Home/Test.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/Gallery.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VzXEdhbGxlcnkuY3NodG1s
+[D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/Editor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VzXEVkaXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/getList.cshtml]
@@ -85,10 +81,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VzXExpc3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/Template.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW1hZ2VzXFRlbXBsYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Image_Processing/Image_Processor/Image_Processor/Views/Images/UploadImage.cshtml]

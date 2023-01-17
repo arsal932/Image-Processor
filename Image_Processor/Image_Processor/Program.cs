@@ -22,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Images}/{action=Gallery}");
+    pattern: "{controller=Home}/{action=Gallery}");
 
 app.Run();
