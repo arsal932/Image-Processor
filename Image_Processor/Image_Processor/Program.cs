@@ -1,7 +1,12 @@
+using Image_Processor.Data.DBContext;
+using Image_Processor.Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.getDbDependencies(builder.Configuration);
+builder.Services.getServiceDependencies();
 
 var app = builder.Build();
 
