@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Image_Processor.Data.Services
 {
-    interface IAccountService
+    public interface IAccountService
     {
         Task<Response> GetUserByIDAsync(string id);
         void SignOutAsync();
         Task<Response> PasswordSignInAsync(string Email, string Password, bool RemeberMe, bool lockoutOnFailure);
-        Task<Response> CreateAsync(ApplicationUser user, string password);
+        Task<Response> CreateAsync(SignUpViewModel signUpViewModel);
         Task<Response> UpdateAsync(ApplicationUser user);
         Response GeneratePasswordHash(ApplicationUser user, string password);
         Task<Response> ValidatePassword(ApplicationUser user, string pass);
         void UpdateRecordAsync(ApplicationUser user);
-        Task SignInAsync(ApplicationUser user, bool isPersistent);
+        Task SignInAsync(SignUpViewModel signUpViewModel, bool isPersistent);
         Task<Response> GetUserRole(ApplicationUser user);
         Task<Response> GetRole(string roleID);
         Task AddToRoleAsync(ApplicationUser user, string Role);

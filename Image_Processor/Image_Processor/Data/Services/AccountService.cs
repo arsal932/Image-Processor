@@ -33,12 +33,13 @@ namespace Image_Processor.Data.Services
             catch { }
         }
 
-        public async Task<Response> CreateAsync(ApplicationUser user, string password)
+        public async Task<Response> CreateAsync(SignUpViewModel signUpViewModel)
         {
             var response = new Response() { IsSuccess = false, Object = null, Message = "" };
             try
             {
-                response.Object = await _accountRepository.CreateAsync(user, password);
+                var user = new ApplicationUser { Email = signUpViewModel.Email, UserName = signUpViewModel.UserName, FirstName = signUpViewModel.FirstName, LastName = signUpViewModel.LastName };
+                response.Object = await _accountRepository.CreateAsync(user, signUpViewModel.Password).Result;
                 response.Message = "User account created.";
                 response.IsSuccess = true;
             }
@@ -238,10 +239,11 @@ namespace Image_Processor.Data.Services
             catch { }
         }
 
-        public async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        public async Task SignInAsync(SignUpViewModel signUpViewModel, bool isPersistent)
         {
             try
             {
+                var user = new ApplicationUser { Email = signUpViewModel.Email, UserName = signUpViewModel.UserName, FirstName = signUpViewModel.FirstName, LastName = signUpViewModel.LastName };
                 await _accountRepository.SignInAsync(user, isPersistent);
             }
             catch { }
