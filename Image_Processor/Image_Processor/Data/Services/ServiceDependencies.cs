@@ -1,4 +1,6 @@
-﻿namespace Image_Processor.Data.Services
+﻿using Image_Processor.Data.Services.Account;
+
+namespace Image_Processor.Data.Services
 {
     public static class ServiceDependencies
     {

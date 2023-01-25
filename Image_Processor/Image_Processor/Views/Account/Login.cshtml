@@ -6,9 +6,9 @@
 
 <div class="modal-body">
     <div class="text-danger">@ViewBag.Message</div>
-    <div class="row">        
-            <div class="col-sm-12">
-                <form asp-action="Login" method="post">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Login" method="post">
                 <center>
                     <img src="~/dist/img/ImageProcessing.png" height="70" width="70" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <h5 class="icon-color">Image Processing</h5>
@@ -33,16 +33,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="RememberMe" type="checkbox"  value="Remember me">
+                            <label class="form-check-label">Remember me</label>
+                        </div>
+                    </div>
+                </div>
                 <hr />
                 <div class="row">
                     <div class="input-group mb-3 text-right">
-                    <button type="submit" class="btn btn-info"><i class="fa fa-sign-in"></i> Login</button>
+                        <button type="submit" class="btn btn-info"><i class="fa fa-sign-in"></i> Login</button>
+                    </div>
+                    <a href="#" onclick="loadView('/Account/SignUp','myModal','myModalContent')">Don't have an account?</a>
+                    <a href="#" onclick="    hideView('myModal');loadView('/Account/ForgotPassword','myModal','myModalContent')">Forgot password?</a>
                 </div>
-                <a href="#"  onclick="loadView('/Account/SignUp','myModal','myModalContent')">Don't have an account?</a>
-                <a href="#" onclick="    hideView('myModal');loadView('/Account/ForgotPassword','myModal','myModalContent')">Forgot password?</a>
-                </div>                
-                </form>
-            </div>                
+            </form>
+        </div>
     </div>
 </div>
 <script>

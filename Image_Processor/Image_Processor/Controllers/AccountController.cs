@@ -1,11 +1,13 @@
-﻿using Image_Processor.Data.Services;
+﻿using Image_Processor.Data.Services.Account;
 using Image_Processor.Models;
 using Image_Processor.Models.Entity_Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Image_Processor.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly IAccountService _account;
@@ -15,20 +17,40 @@ namespace Image_Processor.Controllers
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this._account=_account;
+            this._account = _account;
         }
-        public IActionResult Authentication()
+        public IActionResult AccessDenied()
         {
+            return RedirectToAction("Authentication");
+        }
+        public IActionResult Authentication(string returnUrl)
+        {
+            if (!string.IsNullOrEmpty(returnUrl))
+                ViewBag.returnUrl = returnUrl;
             return View();
         }
-        [HttpGet]
-        public async Task<IActionResult> Login()
+        
+        public async Task<IActionResult> Login(string returnUrl)
         {
-            return PartialView();
+            if (!string.IsNullOrEmpty(returnUrl))
+                return RedirectToAction("Authentication", new { returnUrl = returnUrl });
+            return PartialView(new LoginViewModel() { returnUrl = returnUrl });
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
+            if (ModelState.IsValid)
+            {
+                var result = (Microsoft.AspNetCore.Identity.SignInResult)_account.PasswordSignInAsync(loginViewModel.Email, loginViewModel.Password, loginViewModel.RememberMe, false).Result.Object;
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(loginViewModel.returnUrl))
+                        return Redirect(loginViewModel.returnUrl);
+                    return RedirectToAction("gallery", "Home");
+                }
+                else
+                    ModelState.AddModelError(string.Empty, "Invalid Attempt!.");
+            }
             return RedirectToAction("Authentication");
         }
         [HttpGet]
@@ -36,16 +58,17 @@ namespace Image_Processor.Controllers
         {
             return PartialView();
         }
+
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModel signUpViewModel)
         {
             if (ModelState.IsValid)
-            {                
-                var result =(IdentityResult) await _account.CreateAsync(signUpViewModel).Object;
+            {
+                var result = (IdentityResult)_account.CreateAsync(signUpViewModel).Result.Object;
                 if (result.Succeeded)
                 {
-                    await _account.SignInAsync(signUpViewModel, isPersistent: false);                    
-                    return RedirectToAction("Login", "Account");
+                    await _account.SignInAsync(signUpViewModel, isPersistent: false);
+                    return RedirectToAction("gallery", "Home");
                 }
                 foreach (var Error in result.Errors)
                     ModelState.AddModelError("", Error.Description);

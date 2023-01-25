@@ -35,9 +35,9 @@ namespace Image_Processor.Data.Repositories.Category
             await _context.Categories.AddAsync(Object);
         }
 
-        public Task<bool> IsExists(int ID)
+        public async Task<bool> IsExists(int ID)
         {
-            return _context.Categories.AnyAsync(c => c.CategoryID == ID);
+            return await _context.Categories.AnyAsync(c => c.CategoryID == ID);
         }
 
         public void SaveChanges()

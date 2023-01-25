@@ -12,7 +12,7 @@
 
 </div>
 <script>
-    window.onload = function() {
+    window.onload = function() {        
         loadView('/Account/Login', 'myModal', 'myModalContent');
     }
     function loadView(url, modalId, modalContentID, id) {
@@ -21,7 +21,7 @@
             type: "GET",
             url: url,
             contentType: "application/json; charset=utf-8",
-            data: { "list": id },
+            data: { "returnUrl": id },
             datatype: "json",
 
             success: function(data) {

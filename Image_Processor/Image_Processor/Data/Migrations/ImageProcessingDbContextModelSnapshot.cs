@@ -48,8 +48,7 @@ namespace Image_Processor.Data.Migrations
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
-                        .HasColumnType("nvarchar(MAX)")
-                        .HasColumnName("ImagePath");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()

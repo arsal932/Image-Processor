@@ -29,9 +29,9 @@ namespace Image_Processor.Data.Repositories.Account
         public async void SignOutAsync()
         {
             await signInManager.SignOutAsync();
-        }
+        }        
         public async Task<SignInResult> PasswordSignInAsync(string Email, string Password, bool RemeberMe, bool lockoutOnFailure)
-        {
+        {          
             return await signInManager.PasswordSignInAsync(Email, Password, RemeberMe, lockoutOnFailure);
         }
         public async Task<IdentityResult> CreateAsync(ApplicationUser user, string password)

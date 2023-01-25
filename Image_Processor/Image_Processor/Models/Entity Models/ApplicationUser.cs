@@ -11,9 +11,8 @@ namespace Image_Processor.Models.Entity_Models
         public string FirstName { get; set; }
         [Required]
         [Column(nameof(LastName), TypeName = "nvarchar(20)")]
-        public string LastName { get; set; }
-        [Column(nameof(ImagePath), TypeName = "nvarchar(MAX)")]
-        public string ImagePath { get; set; }      
+        public string LastName { get; set; }                
+        public string? ImagePath { get; set; }      
       
         //[NotMapped]
     }
