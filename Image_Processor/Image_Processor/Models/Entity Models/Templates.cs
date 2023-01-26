@@ -23,7 +23,7 @@ namespace Image_Processor.Models.Entity_Models
         [Column(nameof(EditorType), TypeName = "BIT")]
         public bool EditorType { get; set; }
         [Column(nameof(Last_Modified), TypeName = "datetime")]
-        public DateTime Last_Modified { get; set; }
+        public DateTime? Last_Modified { get; set; }
         public Categories Category { get; set; }
         public List<Files> Files { get; set; }
     }

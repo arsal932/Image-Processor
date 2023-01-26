@@ -16,9 +16,9 @@ namespace Image_Processor.Models.Entity_Models
         [Column(nameof(CategoryName), TypeName = "nvarchar(200)")]
         public string CategoryName { get; set; }
         [Column(nameof(Description), TypeName = "nvarchar(MAX)")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [Column(nameof(Last_Modified), TypeName = "datetime")]
-        public DateTime Last_Modified { get; set; }
+        public DateTime? Last_Modified { get; set; }
         public List<Templates> Templates { get;set;}
        
     }

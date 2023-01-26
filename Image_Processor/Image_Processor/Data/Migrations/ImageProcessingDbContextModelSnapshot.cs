@@ -47,13 +47,16 @@ namespace Image_Processor.Data.Migrations
                         .HasColumnName("FirstName");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("LastName");
+
+                    b.Property<DateTime?>("Last_Modified")
+                        .HasColumnType("datetime")
+                        .HasColumnName("Last_Modified");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -116,11 +119,10 @@ namespace Image_Processor.Data.Migrations
                         .HasColumnName("CategoryName");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(MAX)")
                         .HasColumnName("Description");
 
-                    b.Property<DateTime>("Last_Modified")
+                    b.Property<DateTime?>("Last_Modified")
                         .HasColumnType("datetime")
                         .HasColumnName("Last_Modified");
 
@@ -141,9 +143,12 @@ namespace Image_Processor.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FileID"), 1L, 1);
 
                     b.Property<string>("DisplayName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("DisplayName");
+
+                    b.Property<DateTime?>("Last_Modified")
+                        .HasColumnType("datetime")
+                        .HasColumnName("Last_Modified");
 
                     b.Property<string>("Path")
                         .IsRequired()
@@ -187,7 +192,7 @@ namespace Image_Processor.Data.Migrations
                         .HasColumnType("BIT")
                         .HasColumnName("EditorType");
 
-                    b.Property<DateTime>("Last_Modified")
+                    b.Property<DateTime?>("Last_Modified")
                         .HasColumnType("datetime")
                         .HasColumnName("Last_Modified");
 

@@ -24,7 +24,7 @@ namespace Image_Processor.Data.Services.Templates
             var response = new Models.Response() { IsSuccess = false, Object = null, Message = "" };
             try
             {
-                response.Object = await _templateRepository.GetAll(TextSearch);
+                response.Object =  await _templateRepository.GetAll(TextSearch);
                 response.Message = "Records fetched.";
                 response.IsSuccess = true;
             }

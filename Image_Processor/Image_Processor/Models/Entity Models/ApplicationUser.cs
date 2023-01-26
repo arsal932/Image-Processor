@@ -12,8 +12,10 @@ namespace Image_Processor.Models.Entity_Models
         [Required]
         [Column(nameof(LastName), TypeName = "nvarchar(20)")]
         public string LastName { get; set; }                
-        public string? ImagePath { get; set; }      
-      
+        public string? ImagePath { get; set; }
+        [Column(nameof(Last_Modified), TypeName = "datetime")]
+        public DateTime? Last_Modified { get; set; }
+
         //[NotMapped]
     }
 }

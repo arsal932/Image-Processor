@@ -20,7 +20,9 @@ namespace Image_Processor.Models.Entity_Models
         [Column(nameof(Type), TypeName = "BIT")]
         public bool Type { get; set; }
         [Column(nameof(DisplayName), TypeName = "nvarchar(200)")]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
+        [Column(nameof(Last_Modified), TypeName = "datetime")]
+        public DateTime? Last_Modified { get; set; }
         public Templates Template { get;set;}
 
     }
