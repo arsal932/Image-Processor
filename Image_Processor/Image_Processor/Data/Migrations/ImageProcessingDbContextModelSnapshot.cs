@@ -128,7 +128,8 @@ namespace Image_Processor.Data.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.HasAlternateKey("CategoryName");
+                    b.HasIndex("CategoryName")
+                        .IsUnique();
 
                     b.ToTable("Categories");
                 });
@@ -203,9 +204,10 @@ namespace Image_Processor.Data.Migrations
 
                     b.HasKey("TemplateID");
 
-                    b.HasAlternateKey("TemplateName");
-
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("TemplateName")
+                        .IsUnique();
 
                     b.ToTable("Templates");
                 });

@@ -38,7 +38,7 @@ namespace Image_Processor.Data.Services.Categories
             var response = new Models.Response() { IsSuccess = false, Object = null, Message = "" };
             try
             {
-                response.Object = await _categoryRepository.GetById(ID);
+                response.Object = MapSingle_DTO(await _categoryRepository.GetById(ID));
                 response.Message = "Record fetched.";
                 response.IsSuccess = true;
             }
@@ -92,7 +92,7 @@ namespace Image_Processor.Data.Services.Categories
             {
                 _categoryRepository.Update(MapSingle_Entity(Object, DateTime.Now));
             }
-            catch { }
+            catch(Exception ex) { }
         }
         public List<Models.Entity_Models.Categories> MapMutiple_Entity(List<Models.CategoryViewModel> categoryViewModel, DateTime? currentDate)
         {

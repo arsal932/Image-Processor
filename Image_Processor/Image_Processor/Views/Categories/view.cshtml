@@ -11,7 +11,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Categories</h3>
                     <div class="project-actions text-right">                                                
-                        <button class="button-margin btn btn-info btn-sm float-right"  onclick="loadView('/Templates/Create','myModal','myModalContent')"><i class="fa fa-plus"></i> Add Category</button>                        
+                        <button class="button-margin btn btn-info btn-sm float-right"  onclick="loadView('/Categories/Create','myModal','myModalContent')"><i class="fa fa-plus"></i> Add Category</button>                        
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -56,7 +56,7 @@
             type: "GET",
             url: url,
             contentType: "application/json; charset=utf-8",
-            data: { "list":id },
+            data: { "category":id },
             datatype: "json",
 
             success: function(data) {

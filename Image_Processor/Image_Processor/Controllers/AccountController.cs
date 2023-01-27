@@ -23,13 +23,18 @@ namespace Image_Processor.Controllers
         {
             return RedirectToAction("Authentication");
         }
+        public async Task<IActionResult> logout()
+        {
+            _account.SignOutAsync();
+            return RedirectToAction("Authentication");
+        }
         public IActionResult Authentication(string returnUrl)
         {
             if (!string.IsNullOrEmpty(returnUrl))
                 ViewBag.returnUrl = returnUrl;
             return View();
         }
-        
+
         public async Task<IActionResult> Login(string returnUrl)
         {
             if (!string.IsNullOrEmpty(returnUrl))

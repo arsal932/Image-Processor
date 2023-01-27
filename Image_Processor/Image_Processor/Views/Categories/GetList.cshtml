@@ -32,12 +32,12 @@
                     @Html.DisplayFor(modelItem => item.Last_Modified)
                 </td>                
                 <td class="project-actions text-right">                    
-                    <button class="btn btn-outline-success btn-sm" onclick="loadView('/Templates/Edit','myModal','myModalContent','1')">
+                    <button class="btn btn-outline-success btn-sm" onclick="loadView('/Categories/Edit','myModal','myModalContent','@item.ID')">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                     </button>
-                    <button class="btn btn-outline-danger btn-sm" onclick="loadView('/Templates/Delete','myModal','myModalContent','1')">
+                    <button class="btn btn-outline-danger btn-sm" onclick="loadView('/Categories/Delete','myModal','myModalContent','@item.ID')">
                         <i class="fas fa-trash">
                         </i>
                         Delete

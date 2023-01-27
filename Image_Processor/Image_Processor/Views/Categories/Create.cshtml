@@ -1,4 +1,4 @@
-﻿
+﻿@model Image_Processor.Models.CategoryViewModel
 <div class="modal-header">
     <h4 class="modal-title">New Template</h4>
     <button onclick="hideView('myModal')" type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -12,13 +12,13 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-sort-alpha-down" style="color:#17a2b8"></i></span>
             </div>
-            <input type="text" class="form-control" required placeholder="Category Name" />
+            <input type="text" class="form-control" asp-for="Name" required maxlength="200" placeholder="Category Name" />
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-sort-alpha-up" style="color:#17a2b8"></i></span>
             </div>
-            <input type="text" class="form-control" required placeholder="Description" />
+            <input type="text" class="form-control" asp-for="Description" required placeholder="Description" />
         </div>        
     </div>
     <div class="modal-footer justify-content-between">

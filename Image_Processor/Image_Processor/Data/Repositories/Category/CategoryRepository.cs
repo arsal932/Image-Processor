@@ -21,7 +21,6 @@ namespace Image_Processor.Data.Repositories.Category
         {
             return await _context
                 .Categories
-                .Where(c => c.CategoryName.ToLower().Contains(TextSearch.ToLower()) || c.Description.ToLower().Contains(TextSearch.ToLower()))
                 .ToListAsync();
         }
 
@@ -42,7 +41,7 @@ namespace Image_Processor.Data.Repositories.Category
 
         public void SaveChanges()
         {
-             _context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public async Task SaveChangesAsync()
