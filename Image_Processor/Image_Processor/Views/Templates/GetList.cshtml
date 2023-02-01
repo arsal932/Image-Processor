@@ -7,9 +7,10 @@
         <tr>
             <th><i class="icon-color"></i> #</th>
             <th><i class="icon-color"></i> Name</th>
-            <th><i class="icon-color"></i> Description</th>
+            <th><i class="icon-color"></i> Category</th>
+            <th><i class="icon-color"></i> Type</th>
             <th><i class="icon-color"></i> Total Videos</th>
-            <th><i class="icon-color"></i> Total Images</th>            
+            <th><i class="icon-color"></i> Total Images</th>
             <th><i class="icon-color"></i> Actions</th>
         </tr>
     </thead>
@@ -27,21 +28,33 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.Category)
                 </td>
+                @if (item.Type == true)
+                {
+                    <td style="text-align:center;">
+                        Both videos and images are incuded.
+                    </td>
+                }
+                else
+                {
+                    <td style="text-align:center;">
+                        Only images are incuded.
+                    </td>
+                }
                 <td style="text-align:center;">
                     @Html.DisplayFor(modelItem => item.TotalVideos)
                 </td>
                 <td style="text-align:center;">
                     @Html.DisplayFor(modelItem => item.TotalImages)
-                </td>                
-                <td class="project-actions text-right">                    
-                    <button class="btn btn-outline-success btn-sm" onclick="loadView('/Templates/Edit','myModal','myModalContent','1')">
+                </td>
+                <td class="project-actions text-right">
+                    <button class="btn btn-outline-success btn-sm" onclick="loadView('/Templates/Edit','myModal','myModalContent',@item.id)">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                     </button>
-                    <button class="btn btn-outline-danger btn-sm" onclick="loadView('/Templates/Delete','myModal','myModalContent','1')">
+                    <button class="btn btn-outline-danger btn-sm" onclick="loadView('/Templates/Delete','myModal','myModalContent',@item.id)">
                         <i class="fas fa-trash">
                         </i>
                         Delete
@@ -55,9 +68,10 @@
         <tr>
             <th><i class="icon-color"></i> #</th>
             <th><i class="icon-color"></i> Name</th>
-            <th><i class="icon-color"></i> Description</th>
+            <th><i class="icon-color"></i> Category</th>
+            <th><i class="icon-color"></i> Type</th>
             <th><i class="icon-color"></i> Total Videos</th>
-            <th><i class="icon-color"></i> Total Images</th>            
+            <th><i class="icon-color"></i> Total Images</th>
             <th><i class="icon-color"></i> Actions</th>
         </tr>
     </tfoot>
@@ -77,7 +91,7 @@
                     title: 'Templates',
                     text: window.copyButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -85,7 +99,7 @@
                     title: 'Templates',
                     text: window.csvButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -93,7 +107,7 @@
                     title: 'Templates',
                     text: window.excelButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -101,7 +115,7 @@
                     title: 'Templates',
                     text: window.pdfButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -109,7 +123,7 @@
                     title: 'Templates',
                     text: window.printButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
                 {
@@ -117,7 +131,7 @@
                     title: 'Templates',
                     text: window.colvisButtonTrans,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                        columns: [0, 1, 2, 3, 4, 5]
                     }
                 },
             ]

@@ -93,5 +93,27 @@ namespace Image_Processor.Data.Services.Files
             }
             catch { }
         }
+        public List<Models.Entity_Models.Templates> MapMutiple_Entity(List<Models.TemplateViewModel> templateViewModel, DateTime? currentDate)
+        {
+            var entities = new List<Models.Entity_Models.Templates>();
+            foreach (var item in templateViewModel)
+                entities.Add(new Models.Entity_Models.Templates() { CategoryID = item.categoryId, TemplateName = item.Name, Description = item.Description, Last_Modified = currentDate, EditorType = item.Type, TemplateID = item.id });
+            return entities;
+        }
+        public Models.Entity_Models.Templates MapSingle_Entity(Models.TemplateViewModel templateViewModel, DateTime? currentDate)
+        {
+            return new Models.Entity_Models.Templates() { CategoryID = templateViewModel.categoryId, TemplateName = templateViewModel.Name, Description = templateViewModel.Description, EditorType = templateViewModel.Type, TemplateID = templateViewModel.categoryId, Last_Modified = templateViewModel.Last_Modified };
+        }
+        public List<Models.TemplateViewModel> MapMutiple_DTO(List<Models.Entity_Models.Templates> templates)
+        {
+            var DTOS = new List<Models.TemplateViewModel>();
+            foreach (var item in templates)
+                DTOS.Add(new Models.TemplateViewModel() { categoryId = item.CategoryID, Name = item.TemplateName, Description = item.Description, Last_Modified = item.Last_Modified, id = item.TemplateID, Type = item.EditorType });
+            return DTOS;
+        }
+        public Models.TemplateViewModel MapSingle_DTO(Models.Entity_Models.Templates template)
+        {
+            return new Models.TemplateViewModel() { categoryId = template.CategoryID, Name = template.TemplateName, Description = template.Description, Last_Modified = template.Last_Modified, id = template.TemplateID, Type = template.EditorType };
+        }
     }
 }

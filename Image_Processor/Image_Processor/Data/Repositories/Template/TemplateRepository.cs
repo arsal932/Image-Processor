@@ -21,7 +21,7 @@ namespace Image_Processor.Data.Repositories.Template
         {
             return await _context
                 .Templates
-                .Where(c => c.TemplateName.ToLower().Contains(TextSearch.ToLower()) || c.Description.ToLower().Contains(TextSearch.ToLower()))
+                .Include(c => c.Category)
                 .ToListAsync();
         }
 

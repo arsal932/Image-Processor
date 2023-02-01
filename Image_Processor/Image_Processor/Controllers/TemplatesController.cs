@@ -1,32 +1,53 @@
-﻿using Image_Processor.Models;
+﻿using Image_Processor.Data.Services;
+using Image_Processor.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Image_Processor.Controllers
 {
     public class TemplatesController : Controller
     {
+        private readonly IService<CategoryViewModel, int, Response> _categoryService;
+        private readonly IService<TemplateViewModel, int, Response> _templateService;
+        public TemplatesController(IService<CategoryViewModel, int, Response> categoryService,
+            IService<TemplateViewModel, int, Response> templateService)
+        {
+            _categoryService = categoryService;
+            _templateService = templateService;
+        }
         public async Task<IActionResult> List()
-        {            
+        {
             return View();
         }
         [HttpGet]
         public async Task<IActionResult> getList()
         {
-            Thread.Sleep(2000);
-            List<TemplateViewModel> Templates = new List<TemplateViewModel>();
-            Templates.Add(new TemplateViewModel() { Name = "Exam Template", Description= "this is the exam template description.",TotalImages=10,TotalVideos=20 });
-            Templates.Add(new TemplateViewModel() { Name = "Cricket Template", Description = "this is the cricket template description.", TotalImages = 20, TotalVideos = 30 });
-            Templates.Add(new TemplateViewModel() { Name = "Football Template", Description = "this is the football template description.", TotalImages = 40, TotalVideos = 50 });
-            Templates.Add(new TemplateViewModel() { Name = "Custom Template", Description = "this is the custom template description.", TotalImages = 60, TotalVideos = 70 });
-            return PartialView(Templates);
-        }       
+            try
+            {
+                var templates = (List<TemplateViewModel>)(await _templateService.GetAll(null)).Object;
+                return PartialView(templates != null ? templates : new List<TemplateViewModel>());
+            }
+            catch { }
+            return PartialView(new List<CategoryViewModel>());
+        }
         public async Task<IActionResult> Create()
         {
+            ViewData["Categories"] = new SelectList((List<CategoryViewModel>)(await _categoryService.GetAll(null)).Object, "ID", "Name");
             return PartialView();
         }
         [HttpPost]
         public async Task<IActionResult> Create(TemplateViewModel templateViewModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    templateViewModel.Last_Modified = DateTime.Now;
+                    await _templateService.Insert(templateViewModel);
+                    await _templateService.SaveChangesAsync();
+                }
+            }
+            catch { }
             return RedirectToAction("List");
         }
         public async Task<IActionResult> AddFiles()
@@ -41,21 +62,53 @@ namespace Image_Processor.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int template)
         {
-            return PartialView(new TemplateViewModel() { Name = "Custom Template", Description = "this is the custom template description.", TotalImages = 60, TotalVideos = 70 } );
+            try
+            {
+                ViewData["Categories"] = new SelectList((List<CategoryViewModel>)(await _categoryService.GetAll(null)).Object, "ID", "Name");
+                var Template = (TemplateViewModel)_templateService.GetById(template).Result.Object;
+                if (Template != null)
+                    return PartialView(Template);
+            }
+            catch { }
+            return PartialView(new TemplateViewModel());
         }
         [HttpPost]
         public async Task<IActionResult> Edit(TemplateViewModel templateViewModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    templateViewModel.Last_Modified = DateTime.Now;
+                    _templateService.Update(templateViewModel);
+                    _templateService.SaveChanges();
+                }
+            }
+            catch { }
             return RedirectToAction("List");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int template)
         {
-            return PartialView(new TemplateViewModel() { Name = "Custom Template", Description = "this is the custom template description.", TotalImages = 60, TotalVideos = 70 });
+            try
+            {
+                ViewData["Categories"] = new SelectList((List<CategoryViewModel>)(await _categoryService.GetAll(null)).Object, "ID", "Name");
+                var Template = (TemplateViewModel)_templateService.GetById(template).Result.Object;
+                if (Template != null)
+                    return PartialView(Template);
+            }
+            catch { }
+            return PartialView(new TemplateViewModel());
         }
         [HttpPost]
         public async Task<IActionResult> Delete(TemplateViewModel templateViewModel)
         {
+            try
+            {
+                await _templateService.Delete(templateViewModel.id);
+                await _templateService.SaveChangesAsync();
+            }
+            catch { }
             return RedirectToAction("List");
         }
         //public async Task<IActionResult> ContactsList(int? SusbcriberList)

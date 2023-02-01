@@ -1,5 +1,4 @@
 ﻿@model Image_Processor.Models.TemplateViewModel
-
 <div class="modal-header">
     <h4 class="modal-title">Edit Template</h4>
     <button onclick="hideView('myModal')" type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -9,21 +8,43 @@
 <form asp-action="Edit" method="post">
     <div class="modal-body">
         <div class="text-danger">@ViewBag.Message</div>
+        <input type="hidden" asp-for="id" />
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-sort-alpha-down" style="color:#17a2b8"></i></span>
             </div>
-            <input asp-for="Name" type="text" class="form-control" required placeholder="Template Name" />
+            <select asp-for="categoryId" class="form-control" required asp-items="@ViewBag.Categories">
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-sort-alpha-down" style="color:#17a2b8"></i></span>
+            </div>
+            <input type="text" class="form-control" asp-for="Name" required placeholder="Template Name" />
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-sort-alpha-up" style="color:#17a2b8"></i></span>
             </div>
-            <input asp-for="Description" type="text" class="form-control" required placeholder="Description" />
-        </div>         
+            <input type="text" asp-for="Description" class="form-control" placeholder="Description" />
+        </div><hr />
+        <div class="input-group mb-3">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="Type" type="checkbox">
+                <label class="form-check-label">
+                    <small>Include both videos and images. By default it will support only images.</small>
+                </label>
+            </div>
+        </div>
+        @* <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa fa-file" style="color:#17a2b8"></i></span>
+        </div>
+        <input type="file" class="form-control" required multiple />
+        </div>*@
     </div>
     <div class="modal-footer justify-content-between">
         <button type="button" onclick="hideView('myModal')" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" onclick="hideView('myModal')" class="btn btn-info"><i class="fa fa-sync"></i> Update</button>
+        <button type="submit" class="btn btn-info"><i class="fa fa-sync"></i> Update</button>
     </div>
 </form>            

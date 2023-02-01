@@ -13,7 +13,7 @@ namespace Image_Processor.Data.Services
             services.AddScoped<IAccountService, AccountService>();            
             services.AddScoped<IService<Models.CategoryViewModel, int, Response>, CategoryService>();
             services.AddScoped<IService<Models.Entity_Models.Files, int, Response>, FileService>();
-            services.AddScoped<IService<Models.Entity_Models.Templates, int, Response>, TemplateService>();
+            services.AddScoped<IService<Models.TemplateViewModel, int, Response>, TemplateService>();
         }
     }
 }

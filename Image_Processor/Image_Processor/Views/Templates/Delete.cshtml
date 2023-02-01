@@ -9,6 +9,7 @@
 <form asp-action="Delete" method="post">
     <div class="modal-body">
         <div class="text-danger">@ViewBag.Message</div>
+        <input type="hidden" asp-for="id" />       
         <div class="input-group mb-3">
             <div class="col-sm-12">
                 <p>
@@ -19,6 +20,6 @@
     </div>
     <div class="modal-footer justify-content-between">
         <button type="button" onclick="hideView('myModal')" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" onclick="hideView('myModal')" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
     </div>
 </form>   
